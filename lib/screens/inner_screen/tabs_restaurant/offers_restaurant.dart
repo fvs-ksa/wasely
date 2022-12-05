@@ -16,8 +16,8 @@ class OffersRestaurant extends StatelessWidget {
               navigateTo(context: context, child: MealDetails());
             },
             child: mealsContainer(
-                mainHeight: 175.sp,
-                secondHeight: 130.sp,
+                //mainHeight: 175.sp,
+               // secondHeight: 130.sp,
                 image: NetworkImage(
                   'https://i1.wp.com/kintakicook.com/wp-content/uploads/2020/01/1.png?resize=531%2C531&ssl=1',),
                 mealName: 'وجبه كنتاكي الكبيره',

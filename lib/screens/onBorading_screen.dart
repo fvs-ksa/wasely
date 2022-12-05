@@ -72,8 +72,8 @@ class OnBoradingScreen extends StatelessWidget {
                             ),
                               controller: boardController,
                               count: onboarding.length),
-                          SizedBox(height: 20.sp,),
-                          mainButton(width: 120.sp,text: cubit.isLastFirstBoarding?'دخول الان':'التالي', color: redColor, context: context, fct: (){
+                          SizedBox(height: 5.h,),
+                          mainButton(width: 50.w,text: cubit.isLastFirstBoarding?'دخول الان':'التالي', color: redColor, context: context, fct: (){
                             if(cubit.isLastFirstBoarding){
                               navigateAndReplacement(context: context, child: LoginScreen());
                               // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>LoginScreen()));
@@ -82,7 +82,7 @@ class OnBoradingScreen extends StatelessWidget {
                             }
                           }),
                           SizedBox(
-                            height: 25.sp,
+                            height: 10.h,
                           )
                         ],
                       ),

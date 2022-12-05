@@ -17,8 +17,8 @@ class SandwichRestaurant extends StatelessWidget {
               navigateTo(context: context, child: MealDetails());
             },
             child: mealsContainer(
-                mainHeight: 175.sp,
-                secondHeight: 130.sp,
+              //  mainHeight: 175.sp,
+             //   secondHeight: 130.sp,
                 image: NetworkImage(
                   'https://i2.wp.com/www.ngmisr.com/wp-content/uploads/2019/06/%D9%85%D9%86%D9%8A%D9%88-%D9%83%D9%86%D8%AA%D8%A7%D9%83%D9%8A-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9.jpg',
                 ),
@@ -27,7 +27,7 @@ class SandwichRestaurant extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) {
-          return  SizedBox(height: 10.sp,);
+          return  SizedBox(height: 2.h);
         },
         itemCount: 10);
   }

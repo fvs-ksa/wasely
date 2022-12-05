@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
                         Theme.of(context).textTheme,
                       ),
                     ),
-                    home: OnBoradingScreen(),
+                    home: HomeScreen(),
                   );
                 });
               })),

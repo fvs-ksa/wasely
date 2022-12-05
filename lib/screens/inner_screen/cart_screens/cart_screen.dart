@@ -28,16 +28,16 @@ TextEditingController noteController=TextEditingController();
           child: Scaffold(
             appBar: appBarCart(),
             body: Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding:  EdgeInsets.all(12.sp),
               child: Column(
                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('مطعم كنتاكي',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w800,color: redColor),),
+                  Text('مطعم كنتاكي',style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w800,color: redColor),),
                   Row(
                     children: [
                       Container(
-                        width: 70.sp,
-                        height: 70.sp,
+                        width: 20.w,
+                        height: 10.h,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
@@ -50,12 +50,12 @@ TextEditingController noteController=TextEditingController();
                         padding: EdgeInsets.symmetric(horizontal: 15.sp),
                         child: Column(
                           children: [
-                            Text('وجبه كنتاكي الكبيره',style: TextStyle(fontWeight: FontWeight.w800),),
-                            SizedBox(height: 10.sp,),
+                            Text('وجبه كنتاكي الكبيره',style: TextStyle(fontWeight: FontWeight.w800,fontSize: 12.sp),),
+                            SizedBox(height: 2.h,),
                             Row(
                               children: [
                                 Text('${price} SAR',style: TextStyle(fontWeight: FontWeight.w800),),
-                                SizedBox(width: 10.sp,),
+                                SizedBox(width:7.w,),
                                 Text('X${amount}',style: TextStyle(color: redColor),),
 
 
@@ -69,7 +69,7 @@ TextEditingController noteController=TextEditingController();
 
                     ],
                   ),
-                  SizedBox(height: 40.sp,),
+                  SizedBox(height: 5.h,),
                   TextFormField(
                     controller: noteController,
                     decoration: InputDecoration(
@@ -86,7 +86,7 @@ TextEditingController noteController=TextEditingController();
                     child: Card(
                       elevation: 3,
                       child: Container(
-                        height: 50.sp,
+                        height: 7.h,
 
                         // color: Colors.redAccent,
                         child: Row(

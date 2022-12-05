@@ -44,15 +44,15 @@ class _AddressScreenState extends State<AddressScreen> {
                     Text('تاكيد الطلب',style: TextStyle(color: redColor),),
                     Divider(),
                     Container(
-                      height: 150.sp,
+                      height: 22.h,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(widget.mealName),
-                        SizedBox(width: 80.sp,),
+                        SizedBox(width: 28.w,),
                         Text('x${widget.mealCount}',style: TextStyle(color: redColor),),
-                          SizedBox(width: 30.sp,),
+                          SizedBox(width: 12.w,),
                           Text('${widget.mealPrice} SAR'),
                         ],
                       ),
@@ -63,7 +63,7 @@ class _AddressScreenState extends State<AddressScreen> {
 
                       children: [
                         FaIcon(FontAwesomeIcons.wallet,color: redColor,),
-                        SizedBox(width: 10,),
+                        SizedBox(width: 3.w,),
                         Text('الدفع عند الاستلام'),
                       ],
                     ),
@@ -94,12 +94,13 @@ class _AddressScreenState extends State<AddressScreen> {
                             Text('510.00 SAR',style: TextStyle(color: redColor),),
                           ],
                         ),
-                        SizedBox(height: 10.sp,),
+                        SizedBox(height: 1.5.h,),
                         Text('شامل الضريبه 15% الرقم الضريبي (2121421212442)\n عزيزي العميل لا يمكن الغاء او تعديل الطلب بعد ارساله')
                       ],
                     ),
                     Spacer(),
-                    Align(alignment: Alignment.bottomCenter,child: mainButton(width: 200.sp,text: ' ارسال طلب SAR ${widget.mealPrice} ', color: redColor, context: context, fct: (){}))
+                    Align(alignment: Alignment.bottomCenter,child: mainButton(
+                        width: 50.w,text: ' ارسال طلب SAR ${widget.mealPrice} ', color: redColor, context: context, fct: (){}))
                   ],
                 ),
               ),

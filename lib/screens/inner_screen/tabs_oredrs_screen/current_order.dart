@@ -12,13 +12,13 @@ class CurrentOrder extends StatelessWidget {
         Padding(
           padding:  EdgeInsets.only(top: 10.0.sp,left: 14,right: 14),
           child: Container(
-            height: 110.sp,
+            height: 15.h,
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18.0),
+              padding:  EdgeInsets.symmetric(horizontal: 5.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -34,10 +34,10 @@ class CurrentOrder extends StatelessWidget {
                     indent: 5.sp,
                   ),
 
-                  SizedBox(height: 5.sp,),
+                //  SizedBox(height: .5.h,),
                   Center(
                     //padding:  EdgeInsets.only(right: 48.0.sp),
-                    child: Text('تم الاتفاق مع السائق',style: TextStyle(color: redColor,fontSize: 15.sp),),
+                    child: Text('تم الاتفاق مع السائق',style: TextStyle(color: redColor,fontSize: 12.sp),),
                   ),
                 ],
               ),

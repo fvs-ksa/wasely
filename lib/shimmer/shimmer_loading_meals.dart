@@ -11,7 +11,7 @@ class ShimmerLoadingMeals extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(top: 8.0, left: 10.sp, right: 10.sp),
         child: Container(
-            height: 175.sp,
+            height: 26.h,
             width: double.infinity,
             child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -24,7 +24,7 @@ class ShimmerLoadingMeals extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.all(10),
                     // padding: EdgeInsets.all(8),
-                    height: 130.sp,
+                    height: 20.h,
 
                     decoration: BoxDecoration(
                       color: Colors.grey,
@@ -35,12 +35,12 @@ class ShimmerLoadingMeals extends StatelessWidget {
                   ),
                   //SizedBox(height: 10,),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0.sp),
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(color: Colors.grey,width: 20.sp,height: 10.sp,),
-                        Container(color: Colors.grey,width: 20.sp,height: 10.sp,),
+                        Container(color: Colors.grey,width: 4.w,height: 2.h,),
+                        Container(color: Colors.grey,width: 4.w,height: 2.h,),
                       ],
                     ),
                   )

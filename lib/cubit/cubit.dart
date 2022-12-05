@@ -84,7 +84,7 @@ class GeneralCubit extends Cubit<GeneralState>{
     String postalCode=placeMark.postalCode.toString();
     String country=placeMark.country.toString();
     String administrativeArea=placeMark.administrativeArea.toString();
-    address=name+','+subLocality+','+street+','+locality+','+postalCode+','+administrativeArea+','+country;
+    address=subLocality+','+street+','+locality+','+postalCode+','+administrativeArea+','+country+','+name;
     isLoading=true;
 
     print(address);

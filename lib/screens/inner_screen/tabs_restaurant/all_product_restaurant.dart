@@ -32,8 +32,8 @@ class AllProductOfRestaurant extends StatelessWidget {
                     navigateTo(context: context, child: MealDetails());
                   },
                   child: mealsContainer(
-                      mainHeight: 175.sp,
-                      secondHeight: 130.sp,
+                    //  mainHeight: 26.h,
+                     // secondHeight: 20.h,
                       image: NetworkImage(
                           'https://www.thaqfny.com/wp-content/uploads/2020/11/%D9%88%D8%AC%D8%A8%D8%A7%D8%AA-%D9%83%D9%86%D8%AA%D8%A7%D9%83%D9%8A-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-1.jpg'),
                       price: 150,
@@ -46,7 +46,7 @@ class AllProductOfRestaurant extends StatelessWidget {
             },
             separatorBuilder: (context, index) {
               return SizedBox(
-                height: 10.sp,
+                height: 1.h,
               );
             },
             itemCount: 10);
@@ -57,8 +57,8 @@ class AllProductOfRestaurant extends StatelessWidget {
 
 Widget containerOfAllMeals(AllMeals allMeals) {
   return mealsContainer(
-      mainHeight: 175.sp,
-      secondHeight: 130.sp,
+     // mainHeight: 26.h,
+     // secondHeight: 20.h,
       image: NetworkImage(allMeals.image
           //'https://www.brooonzyah.net/wp-content/uploads/2022/01/%D9%88%D8%AC%D8%A8%D8%A7%D8%AA-%D9%83%D9%86%D8%AA%D8%A7%D9%83%D9%8A-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D9%88%D8%A7%D8%B3%D8%B9%D8%A7%D8%B1%D9%87%D8%A7-%D8%A8%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D9%84-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A.jpg',
           ),

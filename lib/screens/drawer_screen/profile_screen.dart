@@ -28,20 +28,20 @@ TextEditingController nameController=TextEditingController(text: 'جلال');
               ),
               textFormField(controller: nameController, isenable: false),
               textFormField(controller: phoneController, isenable: false),
-             SizedBox(height: 15.sp,),
+             SizedBox(height: 5.h,),
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Text('تسجيل الخروج',style: TextStyle(color: amberColor,fontSize: 18),),
-                 SizedBox(width: 5.sp,),
+                 Text('تسجيل الخروج',style: TextStyle(color: amberColor,fontSize: 14.sp),),
+                 SizedBox(width: 1.w,),
                  FaIcon(FontAwesomeIcons.signOut,color: amberColor,),
                ],
-             ),SizedBox(height: 15.sp,),
+             ),SizedBox(height: 2.h,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('حذف الحساب',style: TextStyle(color: redColor,fontSize: 18),),
-                  SizedBox(width: 5.sp,),
+                  Text('حذف الحساب',style: TextStyle(color: redColor,fontSize: 14.sp),),
+                  SizedBox(width: 1.w,),
                   FaIcon(FontAwesomeIcons.x,color: redColor,),
                 ],
               ),

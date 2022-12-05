@@ -16,9 +16,9 @@ class ShimmerLoading extends StatelessWidget {
       highlightColor: Colors.grey[300]!,
       baseColor: Colors.grey[400]!,
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding:  EdgeInsets.all(10.0.sp),
         child: Container(
-          height: 88.sp,
+          height: 12.h,
           decoration: BoxDecoration(
               // border: Border.all(),
               // borderRadius: BorderRadius.circular(15),
@@ -26,12 +26,12 @@ class ShimmerLoading extends StatelessWidget {
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                padding:  EdgeInsets.symmetric(horizontal: 0.1.w),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                  height: 60.sp,
-                  width: 80.sp,
+                  height: 20.h,
+                  width: 30.w,
                   decoration: BoxDecoration(
                       // shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(15),
@@ -39,7 +39,7 @@ class ShimmerLoading extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 10,
+                width: 4.w,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.sp),
@@ -53,11 +53,11 @@ class ShimmerLoading extends StatelessWidget {
                           Container(
                             width: MediaQuery.of(context).size.width * .29,
                             // height:MediaQuery.of(context).size.height*.30 ,
-                            height: 10.sp,
+                            height: 2.h,
                             color: Colors.grey,
                           ),
                           SizedBox(
-                            width: 60.sp,
+                            width: 16.w,
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * .1,

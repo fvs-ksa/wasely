@@ -31,8 +31,7 @@ class ItemBar extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         title,
-        style: TextStyle(
-            fontWeight: FontWeight.bold, color: textColor, fontSize: 16),
+        style: TextStyle(fontWeight: FontWeight.bold, color: textColor, fontSize: 16.sp),
       ),
     );
   }

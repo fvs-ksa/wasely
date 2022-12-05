@@ -31,55 +31,17 @@ class _LoginScreenState extends State<LoginScreen> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                // Container(
-                //   height: 290.sp,
-                //   child: Stack(
-                //     alignment: Alignment.bottomCenter,
-                //     children: [
-                //       Align(
-                //         alignment: AlignmentDirectional.topCenter,
-                //         child: Container(
-                //           height: 250.sp,
-                //           decoration:  BoxDecoration(
-                //               color: redColor,
-                //               borderRadius: BorderRadius.only(
-                //                   bottomRight: Radius.circular(70))),
-                //         ),
-                //       ),
-                //       Positioned(
-                //           top: 50.sp,
-                //           left: 0,
-                //           child: Container(
-                //             child: Center(
-                //                 child: Text(
-                //               cubit.isRegister ? 'انشاء حساب' : 'تسجيل الدخول',
-                //               style: TextStyle(
-                //                   color: Colors.white,
-                //                   fontSize: 18,
-                //                   fontWeight: FontWeight.bold),
-                //             )),
-                //             width: MediaQuery.of(context).size.width * 0.9,
-                //             height: 50.sp,
-                //             color: amberColor,
-                //           )),
-                //       Container(
-                //         height: 100.sp,
-                //         width: 120.sp,
-                //         child: Image.asset('assets/images/ima.jpg'),
-                //       )
-                //     ],
-                //   ),
-                // ),
+
                 headerContainer(
                   context: context,
                   text: cubit.isRegister ? 'انشاء حساب' : 'تسجيل الدخول',
                 ),
                 SizedBox(
-                  height: 40.sp,
+                  height: 5.h,
                 ),
                 Container(
-                  height: cubit.isRegister ? 275.sp : 200.sp,
-                  width: 250.sp,
+                  height: cubit.isRegister ? 40.h : 30.h,
+                  width: 80.w,
                   decoration: BoxDecoration(
                       color: redColor, borderRadius: BorderRadius.circular(17)),
                   child: Form(
@@ -88,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 17.sp,
+                            height: 3.h,
                           ),
                           cubit.isRegister
                               ? textFormField(
@@ -116,10 +78,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Icons.call),
 
                           SizedBox(
-                            height: 19.sp,
+                            height: 1.h,
                           ),
                           mainButton(
-                              width: 120.sp,
+                              width: 50.w,
                               text:
                           cubit.isRegister
                                       ? 'انشاء حساب'

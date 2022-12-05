@@ -197,7 +197,7 @@ Widget mainContainer({required BuildContext context,required Function fct,requir
   Color? color,
   String? title}){
   return Padding(
-    padding: const EdgeInsets.all(10.0),
+    padding:  EdgeInsets.all(10.0.sp),
     child: InkWell(
       onTap: () {
         fct();
@@ -213,9 +213,9 @@ Widget mainContainer({required BuildContext context,required Function fct,requir
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              padding:  EdgeInsets.symmetric(horizontal: 0.1.w),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 1.w),
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 height: heightSecondContainer,
                 width: widthSecondContainer,
@@ -229,10 +229,10 @@ Widget mainContainer({required BuildContext context,required Function fct,requir
               ),
             ),
             SizedBox(
-              width: 10,
+              width: 5.w,
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(vertical: 20.sp),
+              padding:  EdgeInsets.symmetric(vertical: 2.h),
               child: Container(
                 child: Column(
 
@@ -248,14 +248,14 @@ Widget mainContainer({required BuildContext context,required Function fct,requir
                             title!,
                             style: TextStyle(
                                // fontWeight: FontWeight.w800,
-                                fontSize: 18),
+                                fontSize: 15.sp),
                           ),
                         ),
-                        SizedBox(width: 60.sp,),
+                        SizedBox(width: 13.w,),
                         Text('${distance.toString()} kms')
                       ],
                     ),
-                    SizedBox(height: 10.sp,),
+                    SizedBox(height: 2.h,),
                     Text(status!,style: TextStyle(color: color,fontSize: 15,fontWeight: FontWeight.w700),)
 
                   ],
@@ -270,11 +270,13 @@ Widget mainContainer({required BuildContext context,required Function fct,requir
 }
 
 
-Widget mealsContainer({required double mainHeight,required double secondHeight,required NetworkImage image,required String mealName,required double price}){
+Widget mealsContainer({
+  //required double mainHeight,required double secondHeight,
+  required NetworkImage image,required String mealName,required double price}){
   return Padding(
     padding:  EdgeInsets.only(top: 8.0,left: 10.sp,right: 10.sp),
     child: Container(
-        height: mainHeight,
+        height: 28.h,
         width: double.infinity,
         child: Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -289,7 +291,7 @@ Widget mealsContainer({required double mainHeight,required double secondHeight,r
               Container(
                 margin: EdgeInsets.all(10),
                 // padding: EdgeInsets.all(8),
-                height: secondHeight,
+                height: 20.h,
 
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -327,7 +329,7 @@ navigateAndReplacement({required BuildContext context,required Widget child}){
 }
 Widget notifiContainer(){
   return Container(
-    height: 80.sp,
+    height: 10.8.h,
       decoration: BoxDecoration(
       border: Border.all(),
   borderRadius: BorderRadius.circular(15),),
@@ -338,8 +340,8 @@ Widget notifiContainer(){
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 10),
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              height: 60.sp,
-              width: 50.sp,
+              height: 8.h,
+              width: 17.w,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
@@ -350,7 +352,7 @@ Widget notifiContainer(){
             ),
           ),
           SizedBox(
-            width: 10,
+            width: 2.w,
           ),
           Padding(
             padding:  EdgeInsets.symmetric(vertical: 7.0.sp),
@@ -368,7 +370,7 @@ Widget notifiContainer(){
                   //   width: 65.sp,
                   // ),
                   SizedBox(
-                    height: 8.sp,
+                    height: 1.h,
                   ),
                   Text('تم قبول طلبك')
                   // SizedBox(

@@ -10,9 +10,9 @@ class PreviousOrder extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(height: 100.sp,width: double.infinity/2,child: Image.asset('assets/restaurant.png')),
-          SizedBox(height: 10.sp,),
-          Text('لا يوجد لديك طلبات سابقه',style: TextStyle(fontSize: 25,),),
+          Container(height: 18.h,width: double.infinity/2,child: Image.asset('assets/restaurant.png')),
+          SizedBox(height: 1.h,),
+          Text('لا يوجد لديك طلبات سابقه',style: TextStyle(fontSize: 17.sp,),),
         ],
       ),
     );

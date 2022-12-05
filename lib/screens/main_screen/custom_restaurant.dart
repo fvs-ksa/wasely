@@ -48,7 +48,7 @@ class _CustomRestaurantState extends State<CustomRestaurant>
           child: Scaffold(
             appBar: AppBar(
               bottom: PreferredSize(child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 8.0.sp),
+                padding:  EdgeInsets.symmetric(horizontal: 4.0.w),
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   elevation: 3,

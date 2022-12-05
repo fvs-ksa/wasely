@@ -17,7 +17,7 @@ class HomeCubit extends Cubit<HomeState>{
   Future<void> loadHomeData()async{
     isLoadingShimmer = true;
     emit(LoadingShimmerTrueState());
-    await  Future.delayed(Duration(seconds: 2));
+    await  Future.delayed(Duration(seconds: 3));
     shimmerList=List.of(restaurant);
     isLoadingShimmer=false;
     emit(LoadingShimmerFalseState());
