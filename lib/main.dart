@@ -12,6 +12,7 @@ import 'package:wasely/pallette.dart';
 import 'package:wasely/screens/auth_screen/login_screen.dart';
 import 'package:wasely/screens/inner_screen/cart_screens/cart_screen.dart';
 import 'package:wasely/screens/drawer_screen/contact_us.dart';
+import 'package:wasely/screens/inner_screen/custom_order.dart';
 import 'package:wasely/screens/inner_screen/meal_details.dart';
 import 'package:wasely/screens/drawer_screen/notification_screen.dart';
 import 'package:wasely/screens/drawer_screen/order_screen.dart';
@@ -21,6 +22,7 @@ import 'package:wasely/screens/onBorading_screen.dart';
 import 'package:wasely/utils/shared_pref.dart';
 
 import 'bloc_observe.dart';
+import 'cubit/custom_order_cubit/cubit.dart';
 import 'cubit/state.dart';
 
 void main() async {
@@ -47,6 +49,9 @@ class MyApp extends StatelessWidget {
             BlocProvider<AllMealsCubit>(
                 create: (context) =>
                     AllMealsCubit()..loadAllMealsShimmerData()),
+            BlocProvider<CustomOrderCubit>(
+                create: (context) =>
+                CustomOrderCubit()),
             BlocProvider<DetailMealsCubit>(
                 create: (context) => DetailMealsCubit()..getCurrentLocation(),),
             BlocProvider<HomeCubit>(
@@ -65,7 +70,7 @@ class MyApp extends StatelessWidget {
                         Theme.of(context).textTheme,
                       ),
                     ),
-                    home: HomeScreen(),
+                    home: CustomOrderScreen(),
                   );
                 });
               })),

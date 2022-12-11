@@ -8,6 +8,16 @@
 		<string>يحتاج وصلي الوصول الموقع الخاص بك لتحديد موقع استلام الطلب</string>
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>يحتاج وصلي الى الموقع الخاص بك لتحديد موقع استلام الطلب</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+        <string>This app needs camera access to upload image of order</string>
+        <key>NSLocationWhenInUseUsageDescription</key>
+        <string>This app needs access to location when open.</string>
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>This app needs access to location when in the background.</string>
+        <key>NSCameraUsageDescription</key>
+        <string>This app needs camera access to upload image of order</string>
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>This app needs camera access to upload image of order</string>
 		<key>CFBundleDisplayName</key>
 		<string>وصلي</string>
 		<key>CFBundleExecutable</key>
