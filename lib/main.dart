@@ -29,6 +29,7 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   Bloc.observer = MyBlocObserver();
+  //await BlocConsumer<GeneralCubit,GeneralState>(builder: (context,state){return Text('data');},listener: (context,state){},);
   // currentLocation=CacheHelper.getData(key: 'address');
   await CacheHelper.init();
   runApp(const MyApp());
@@ -50,10 +51,10 @@ class MyApp extends StatelessWidget {
                 create: (context) =>
                     AllMealsCubit()..loadAllMealsShimmerData()),
             BlocProvider<CustomOrderCubit>(
-                create: (context) =>
-                CustomOrderCubit()),
+                create: (context) => CustomOrderCubit()),
             BlocProvider<DetailMealsCubit>(
-                create: (context) => DetailMealsCubit()..getCurrentLocation(),),
+              create: (context) => DetailMealsCubit()..getCurrentLocation(),
+            ),
             BlocProvider<HomeCubit>(
                 create: (context) => HomeCubit()..loadHomeData()),
           ],

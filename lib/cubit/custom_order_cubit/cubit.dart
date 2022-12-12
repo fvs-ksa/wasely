@@ -23,4 +23,8 @@ class CustomOrderCubit extends Cubit<CustomOrderState>{
     pickImage=true;
     emit(PickGalleryImageCustomOrderState());
   }
+  clearImage(){
+    pickImage=false;
+    emit(ClearImageCustomOrderState());
+  }
 }

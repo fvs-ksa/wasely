@@ -10,16 +10,23 @@ import '../../../cubit/detailsmeal_cubit/cubit.dart';
 import '../../../cubit/detailsmeal_cubit/state.dart';
 
 class CartScreen extends StatelessWidget {
-
   String image;
- // String name;
+
+  // String name;
   int amount;
   int price;
-   CartScreen({Key? key,required this.image,required this.price,required this.amount}) : super(key: key);
-TextEditingController noteController=TextEditingController();
+
+  CartScreen(
+      {Key? key,
+      required this.image,
+      required this.price,
+      required this.amount})
+      : super(key: key);
+  TextEditingController noteController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-   // var cubit=DetailMealsCubit.get(context);
+    // var cubit=DetailMealsCubit.get(context);
     return BlocConsumer<DetailMealsCubit, DetailsMealsState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -28,11 +35,17 @@ TextEditingController noteController=TextEditingController();
           child: Scaffold(
             appBar: appBarCart(),
             body: Padding(
-              padding:  EdgeInsets.all(12.sp),
+              padding: EdgeInsets.all(12.sp),
               child: Column(
-               // crossAxisAlignment: CrossAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('مطعم كنتاكي',style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w800,color: redColor),),
+                  Text(
+                    'مطعم كنتاكي',
+                    style: TextStyle(
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w800,
+                        color: redColor),
+                  ),
                   Row(
                     children: [
                       Container(
@@ -50,26 +63,37 @@ TextEditingController noteController=TextEditingController();
                         padding: EdgeInsets.symmetric(horizontal: 15.sp),
                         child: Column(
                           children: [
-                            Text('وجبه كنتاكي الكبيره',style: TextStyle(fontWeight: FontWeight.w800,fontSize: 12.sp),),
-                            SizedBox(height: 2.h,),
+                            Text(
+                              'وجبه كنتاكي الكبيره',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w800, fontSize: 12.sp),
+                            ),
+                            SizedBox(
+                              height: 2.h,
+                            ),
                             Row(
                               children: [
-                                Text('${price} SAR',style: TextStyle(fontWeight: FontWeight.w800),),
-                                SizedBox(width:7.w,),
-                                Text('X${amount}',style: TextStyle(color: redColor),),
-
-
+                                Text(
+                                  '${price} SAR',
+                                  style: TextStyle(fontWeight: FontWeight.w800),
+                                ),
+                                SizedBox(
+                                  width: 7.w,
+                                ),
+                                Text(
+                                  'X${amount}',
+                                  style: TextStyle(color: redColor),
+                                ),
                               ],
                             ),
-
                           ],
                         ),
-
                       ),
-
                     ],
                   ),
-                  SizedBox(height: 5.h,),
+                  SizedBox(
+                    height: 5.h,
+                  ),
                   TextFormField(
                     controller: noteController,
                     decoration: InputDecoration(
@@ -92,29 +116,41 @@ TextEditingController noteController=TextEditingController();
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-
-                           // Text('${cubit.total}SAR'),
-                           // SizedBox(width: 30.sp,),
+                            // Text('${cubit.total}SAR'),
+                            // SizedBox(width: 30.sp,),
 
                             Padding(
-                              padding:  EdgeInsets.symmetric(horizontal: 18.0.sp),
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 18.0.sp),
                               child: InkWell(
-                                onTap: (){
-                                  navigateTo(context: context, child: AddressScreen(mealCount: amount,mealName: 'وجبه كنتاكي الكبيره',mealPrice: price,));
+                                onTap: () {
+                                  navigateTo(
+                                      context: context,
+                                      child: AddressScreen(
+                                        mealCount: amount,
+                                        mealName: 'وجبه كنتاكي الكبيره',
+                                        mealPrice: price,
+                                      ));
                                   // cubit.addToCart();
                                   // // _PatternVibrate();
                                   // HapticFeedback.vibrate();
                                 },
                                 child: Row(
-                                 // mainAxisAlignment: MainAxisAlignment.start,
+                                  // mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text('الاستمرار'),
-                                    CircleAvatar(backgroundColor: Colors.white,radius: 13,child: Icon(Icons.arrow_forward_ios,color: redColor,),),
+                                    CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      radius: 13,
+                                      child: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: redColor,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             )
-
                           ],
                         ),
                       ),
