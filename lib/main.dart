@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
                 create: (context) =>
                     AllMealsCubit()..loadAllMealsShimmerData()),
             BlocProvider<CustomOrderCubit>(
-                create: (context) => CustomOrderCubit()),
+                create: (context) => CustomOrderCubit()..generateNumbers),
             BlocProvider<DetailMealsCubit>(
               create: (context) => DetailMealsCubit()..getCurrentLocation(),
             ),

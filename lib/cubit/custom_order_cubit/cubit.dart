@@ -9,6 +9,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:wasely/cubit/custom_order_cubit/state.dart';
+import 'package:wasely/model/driver_offer_model.dart';
+import 'package:wasely/model/user_model.dart';
 
 import '../../component/const_color.dart';
 import '../../utils/shared_pref.dart';
@@ -111,6 +113,21 @@ class CustomOrderCubit extends Cubit<CustomOrderState>{
     emit(GetCurrentAddressForCustomOrderLoadingState());
     await determinePosition().then((value)=>getPlace(value));
   }
+static List<DriverOfferModel> driver=[];
 
 
+
+  Stream<List<DriverOfferModel>?> generateNumbers = (() async* {
+    await Future<void>.delayed(Duration(seconds: 5));
+    driver=List.of(driverOffer);
+    yield driver;
+    // for (int i = 1; i <= 5; i++) {
+    //
+    //   await Future<void>.delayed(Duration(seconds: 4));
+    //
+    //   print(i);
+    //   print(driver[i].price);
+    //   yield driver;
+    // }
+  })();
 }
