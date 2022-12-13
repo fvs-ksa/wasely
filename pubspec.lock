@@ -191,6 +191,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttertoast:
+    dependency: "direct main"
+    description:
+      name: fluttertoast
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.1.2"
   font_awesome_flutter:
     dependency: "direct main"
     description:
@@ -373,6 +380,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.7.0"
+  loading_overlay_pro:
+    dependency: "direct main"
+    description:
+      name: loading_overlay_pro
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.1"
   location:
     dependency: "direct main"
     description:

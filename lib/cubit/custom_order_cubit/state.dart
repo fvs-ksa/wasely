@@ -3,3 +3,7 @@ class InitialCustomOrderState extends CustomOrderState{}
 class PickCameraImageCustomOrderState extends CustomOrderState{}
 class PickGalleryImageCustomOrderState extends CustomOrderState{}
 class ClearImageCustomOrderState extends CustomOrderState{}
+class ChangePayCashOrderState extends CustomOrderState{}
+class ChangePayCreditOrderState extends CustomOrderState{}
+class GetCurrentAddressForCustomOrderSuccessState extends CustomOrderState{}
+class GetCurrentAddressForCustomOrderLoadingState extends CustomOrderState{}

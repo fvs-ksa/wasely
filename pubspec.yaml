@@ -53,6 +53,8 @@ dependencies:
   snippet_coder_utils: ^1.0.12
   dropdown_button2: ^1.4.0
   image_picker: ^0.8.6
+  fluttertoast: ^8.1.2
+  loading_overlay_pro: ^2.1.1
 
 
 

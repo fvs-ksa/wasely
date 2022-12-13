@@ -14,7 +14,7 @@ import 'package:wasely/screens/main_screen/custom_restaurant.dart';
 import '../../component/const_color.dart';
 import '../../component/constant_fonts.dart';
 import '../../shimmer/shimmer_loading_home.dart';
-import '../inner_screen/custom_order.dart';
+import '../inner_screen/custom_order/custom_order.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -317,24 +317,5 @@ class _HomeScreenState extends State<HomeScreen> {
         image: NetworkImage(model.image));
   }
 
-  showLoaderDialog({required BuildContext context}) {
-    AlertDialog alertDialog = AlertDialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 100.sp),
-      // contentPadding: EdgeInsets.zero,
-      // clipBehavior: Clip.antiAliasWithSaveLayer,
-      content: Builder(builder: (context) {
-        return Container(
-          //  width: 80,
-          height: 50.sp,
-          child: Center(child: CircularProgressIndicator()),
-        );
-      }),
-    );
-    showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) {
-          return alertDialog;
-        });
-  }
+
 }

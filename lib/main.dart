@@ -12,7 +12,8 @@ import 'package:wasely/pallette.dart';
 import 'package:wasely/screens/auth_screen/login_screen.dart';
 import 'package:wasely/screens/inner_screen/cart_screens/cart_screen.dart';
 import 'package:wasely/screens/drawer_screen/contact_us.dart';
-import 'package:wasely/screens/inner_screen/custom_order.dart';
+import 'package:wasely/screens/inner_screen/custom_order/custom_order.dart';
+import 'package:wasely/screens/inner_screen/custom_order/driver_offer.dart';
 import 'package:wasely/screens/inner_screen/meal_details.dart';
 import 'package:wasely/screens/drawer_screen/notification_screen.dart';
 import 'package:wasely/screens/drawer_screen/order_screen.dart';
@@ -71,7 +72,7 @@ class MyApp extends StatelessWidget {
                         Theme.of(context).textTheme,
                       ),
                     ),
-                    home: CustomOrderScreen(),
+                    home: DriverOfferScreen(),
                   );
                 });
               })),
