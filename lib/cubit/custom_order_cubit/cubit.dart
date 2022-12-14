@@ -33,7 +33,7 @@ class CustomOrderCubit extends Cubit<CustomOrderState>{
     file=(File(pickedFile!.path));
     pickImage=true;
     emit(PickGalleryImageCustomOrderState());
-    Navigator.pop(context);
+   // Navigator.pop(context);
   }
   clearImage(){
     pickImage=false;
@@ -59,7 +59,11 @@ class CustomOrderCubit extends Cubit<CustomOrderState>{
     }
 
   }
-
+  List<String> messages = [];
+  sentMessage(String message)async{
+    messages.add(message);
+ emit(SentMessageSuccessState());
+}
 
 
   late Position position;

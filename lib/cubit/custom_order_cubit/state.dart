@@ -7,3 +7,4 @@ class ChangePayCashOrderState extends CustomOrderState{}
 class ChangePayCreditOrderState extends CustomOrderState{}
 class GetCurrentAddressForCustomOrderSuccessState extends CustomOrderState{}
 class GetCurrentAddressForCustomOrderLoadingState extends CustomOrderState{}
+class SentMessageSuccessState extends CustomOrderState{}
