@@ -33,10 +33,7 @@ class CurrentOrder extends StatelessWidget {
                     thickness: 2,
                     indent: 5.sp,
                   ),
-
-                //  SizedBox(height: .5.h,),
                   Center(
-                    //padding:  EdgeInsets.only(right: 48.0.sp),
                     child: Text('تم الاتفاق مع السائق',style: TextStyle(color: redColor,fontSize: 12.sp),),
                   ),
                 ],

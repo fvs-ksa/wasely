@@ -1,5 +1,3 @@
-
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +6,6 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/state.dart';
-import 'package:wasely/model/restaurant_model.dart';
 import 'package:wasely/utils/shared_pref.dart';
 
 class GeneralCubit extends Cubit<GeneralState>{

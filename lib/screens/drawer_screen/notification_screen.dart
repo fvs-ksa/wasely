@@ -14,10 +14,10 @@ class NotificationScreen extends StatelessWidget {
           title: Text('الاشعارات'),
         ),
         body: Padding(
-          padding:  EdgeInsets.only(top: 18.0.sp,right: 15.sp,left: 15.sp,bottom: 7.sp),
+          padding:  EdgeInsets.only(top: 1.0.h,right: 4.w,left: 4.w,bottom: 2.h),
           child: Column(
             children: [
-              notifiContainer(),
+              notifyContainer(),
             ],
           ),
         ),

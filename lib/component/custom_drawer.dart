@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wasely/component/const_color.dart';
 import 'package:wasely/screens/drawer_screen/about_us.dart';
 import 'package:wasely/screens/drawer_screen/contact_us.dart';
 import 'package:wasely/screens/drawer_screen/notification_screen.dart';
 import 'package:wasely/screens/drawer_screen/order_screen.dart';
 import 'package:wasely/screens/drawer_screen/privacy_polices.dart';
 import 'package:wasely/screens/drawer_screen/profile_screen.dart';
-
 import 'component.dart';
 import 'constant_fonts.dart';
 
@@ -28,7 +26,6 @@ class CustomDrawer extends StatelessWidget {
           containerOfDrawer(
               fct: () {
                 navigateTo(context: context, child: ProfileScreen());
-               // Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
                 print('object');
               },
               text: 'حسابي',iconData: FontAwesomeIcons.person),

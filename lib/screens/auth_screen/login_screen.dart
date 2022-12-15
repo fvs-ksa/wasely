@@ -31,7 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-
                 headerContainer(
                   context: context,
                   text: cubit.isRegister ? 'انشاء حساب' : 'تسجيل الدخول',
@@ -64,7 +63,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   text: 'الاسم',
                                 )
                               : Container(),
-
                           textFormField(
                               number: 10,
                               type: TextInputType.phone,
@@ -76,73 +74,22 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                               text: '05xxxxxxxx',
                               child: Icons.call),
-
                           SizedBox(
                             height: 1.h,
                           ),
                           mainButton(
                               width: 50.w,
-                              text:
-                          cubit.isRegister
-                                      ? 'انشاء حساب'
-                                      : 'ارسال كود تحقق',
-                               color: amberColor, context: context, fct: (){
-                                    if (key.currentState!.validate()) {
-                                      navigateAndReplacement(
-                                          context: context, child: OtpScreen());
-                                    }
+                              text: cubit.isRegister
+                                  ? 'انشاء حساب'
+                                  : 'ارسال كود تحقق',
+                              color: amberColor,
+                              context: context,
+                              fct: () {
+                                if (key.currentState!.validate()) {
+                                  navigateAndReplacement(
+                                      context: context, child: OtpScreen());
+                                }
                               }),
-                          // InkWell(
-                          //   onTap: () {
-                          //     if (key.currentState!.validate()) {
-                          //       navigateAndReplacement(
-                          //           context: context, child: OtpScreen());
-                          //     }
-                          //   },
-                          //   child: Container(
-                          //     height: 30.sp,
-                          //     width: 120.sp,
-                          //     child: Center(child: Text(
-                          //       cubit.isRegister
-                          //           ? 'انشاء حساب'
-                          //           : 'ارسال كود تحقق',
-                          //       style: TextStyle(
-                          //           color: Colors.white,
-                          //           fontWeight: FontWeight.bold,
-                          //           fontSize: 18),
-                          //     ),),
-                          //     decoration: BoxDecoration(
-                          //         color: amberColor,
-                          //         borderRadius: BorderRadius.circular(15)),
-                          //   ),
-                          // ),
-                          // TextButton(
-                          //   onPressed: () {
-                          //     if (key.currentState!.validate()) {
-                          //       navigateAndReplacement(
-                          //           context: context, child: OtpScreen());
-                          //     }
-                          //   },
-                          //   child: Text(
-                          //     cubit.isRegister
-                          //         ? 'انشاء حساب'
-                          //         : 'ارسال كود تحقق',
-                          //     style: TextStyle(
-                          //         color: Colors.white,
-                          //         fontWeight: FontWeight.bold,
-                          //         fontSize: 18),
-                          //   ),
-                          //   style: ButtonStyle(
-                          //       shape: MaterialStateProperty.all<
-                          //               RoundedRectangleBorder>(
-                          //           RoundedRectangleBorder(
-                          //               borderRadius:
-                          //                   BorderRadius.circular(25))),
-                          //       backgroundColor:
-                          //           MaterialStateProperty.all<Color>(
-                          //         amberColor,
-                          //       )),
-                          // ),
                           SizedBox(
                             height: 5.sp,
                           ),
@@ -156,8 +103,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     : 'ليس لدي حساب؟ انشاء حساب',
                                 style: TextStyle(color: Colors.white),
                               )),
-
-                          //MaterialButton(onPressed: (){},child: Text('تسجيل الدخول'),elevation: 10,color: Colors.amber,shape: ShapeBorder.lerp(ShapeBorder(), 15.2, t),)
                         ],
                       ),
                     ),

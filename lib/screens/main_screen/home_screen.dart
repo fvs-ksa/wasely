@@ -193,8 +193,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: InkWell(
                                     onTap: () {
                                         navigateTo(context: context, child: CustomOrderScreen());
-                                      // Navigator.of(context).push(MaterialPageRoute(
-                                      //     builder: (context) => CustomRestaurant()));
                                     },
                                     child: Container(
                                       height: 12.h,
@@ -212,7 +210,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                               height: 10.h,
                                               width: 27.w,
                                               decoration: BoxDecoration(
-                                                // shape: BoxShape.rectangle,
                                                   borderRadius: BorderRadius.circular(15),
                                                   image: DecorationImage(
                                                       fit: BoxFit.fitHeight,
@@ -235,16 +232,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     children: [
                                                       Container(
                                                         width:MediaQuery.of(context).size.width*.29,
-                                                        // height:MediaQuery.of(context).size.height*.30 ,
                                                         child: Text(
                                                           'كل الي تحتاجه',
                                                           style: TextStyle(
-                                                            // fontWeight: FontWeight.w800,
                                                               fontSize: 15.sp),
                                                         ),
                                                       ),
-                                                      // SizedBox(width: 13.w,),
-                                                      // Text('kms')
                                                     ],
                                                   ),
                                                   SizedBox(height: 2.h,),
@@ -276,7 +269,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             return Divider(
                               endIndent: 10.sp,
                               indent: 10.sp,
-                              //  color: Colors.green,
                               thickness: 2,
                             );
                           },

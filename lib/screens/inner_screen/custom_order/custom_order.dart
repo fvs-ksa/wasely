@@ -1,19 +1,15 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
-import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/cubit/state.dart';
-
 import '../../../component/component.dart';
 import '../../../cubit/custom_order_cubit/cubit.dart';
 import '../../../cubit/custom_order_cubit/state.dart';
-import '../../../pallette.dart';
 import 'driver_offer.dart';
 class CustomOrderScreen extends StatelessWidget {
    CustomOrderScreen({Key? key}) : super(key: key);
@@ -35,9 +31,7 @@ class CustomOrderScreen extends StatelessWidget {
       },
       builder: (context, state) {
         return BlocConsumer<GeneralCubit, GeneralState>(
-          listener: (context, state) {
-
-          },
+          listener: (context, state) {},
           builder: (context, state) {
             return Directionality(
               textDirection: TextDirection.rtl,
@@ -58,8 +52,6 @@ class CustomOrderScreen extends StatelessWidget {
                             validator: (var value) {
                               if (value!.isEmpty) {
                                 return 'تفاصيل طلبك مهمه النا';
-                                // navigateAndReplacement(
-                                //     context: context, child: OtpScreen());
                               }
                               return null;
                             },
@@ -116,12 +108,9 @@ class CustomOrderScreen extends StatelessWidget {
                             onTap: () {
                               showCupertinoDialog(barrierDismissible: true,context: context, builder: (context){
                                 return AlertDialog(
-
-                               //  alignment: Alignment.topRight,
                                   content: Directionality(
                                     textDirection: TextDirection.rtl,
                                     child: Column(
-                                     // crossAxisAlignment: CrossAxisAlignment.start,
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         GestureDetector(

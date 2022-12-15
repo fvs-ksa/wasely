@@ -111,14 +111,9 @@ class CartScreen extends StatelessWidget {
                       elevation: 3,
                       child: Container(
                         height: 7.h,
-
-                        // color: Colors.redAccent,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            // Text('${cubit.total}SAR'),
-                            // SizedBox(width: 30.sp,),
-
                             Padding(
                               padding:
                                   EdgeInsets.symmetric(horizontal: 18.0.sp),
@@ -131,12 +126,8 @@ class CartScreen extends StatelessWidget {
                                         mealName: 'وجبه كنتاكي الكبيره',
                                         mealPrice: price,
                                       ));
-                                  // cubit.addToCart();
-                                  // // _PatternVibrate();
-                                  // HapticFeedback.vibrate();
                                 },
                                 child: Row(
-                                  // mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text('الاستمرار'),
                                     CircleAvatar(

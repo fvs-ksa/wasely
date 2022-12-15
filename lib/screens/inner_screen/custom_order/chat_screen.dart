@@ -9,6 +9,30 @@ import 'package:wasely/component/const_color.dart';
 import '../../../cubit/custom_order_cubit/cubit.dart';
 import '../../../cubit/custom_order_cubit/state.dart';
 
+class Constants {
+  static const String FirstItem = 'الغاء الطلب';
+
+  // static const String SecondItem = 'Second Item';
+  // static const String ThirdItem = 'Third Item';
+
+  static const List<String> choices = <String>[
+    FirstItem,
+    // SecondItem,
+    // ThirdItem,
+  ];
+}
+
+void choiceAction(String choice) {
+  if (choice == Constants.FirstItem) {
+    print('Cancel Success');
+  }
+  // } else if (choice == Constants.SecondItem) {
+  //   print('I Second Item');
+  // } else if (choice == Constants.ThirdItem) {
+  //   print('I Third Item');
+  // }
+}
+
 class ChatScreen extends StatelessWidget {
   int index;
   String phone;
@@ -24,7 +48,6 @@ class ChatScreen extends StatelessWidget {
       : super(key: key);
   TextEditingController messageController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     var customOrderCubit = CustomOrderCubit.get(context);
@@ -34,85 +57,115 @@ class ChatScreen extends StatelessWidget {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(15.h),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 120.h,
-                  decoration: BoxDecoration(
-                      color: redColor,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20.sp),
-                          bottomRight: Radius.circular(20.sp))),
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 25.sp,
-                              backgroundImage: NetworkImage(image),
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            Text(
-                              name,
-                              style: TextStyle(
-                                  fontSize: 15.sp, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        IconButton(
-                            onPressed: () async {
-                              await launchUrlString('tel:${phone}');
-                            },
-                            icon: FaIcon(
-                              FontAwesomeIcons.phone,
-                              color: Colors.white,
-                            ))
-                      ],
-                    ),
+            appBar: AppBar(
+              actions: [
+                PopupMenuButton<String>(
+                    icon: Icon(Icons.more_vert),
+                    onSelected: choiceAction,
+                    itemBuilder: (BuildContext context) {
+                      return Constants.choices.map((String e) {
+                        return PopupMenuItem<String>(
+                          child: Text(e),
+                          value: e,
+                        );
+                      }).toList();
+                    }),
+              ],
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 14.sp,
+                        backgroundImage: NetworkImage(image),
+                      ),
+                      SizedBox(
+                        width: 3.w,
+                      ),
+                      Text(
+                        name,
+                        style: TextStyle(fontSize: 15.sp, color: Colors.white),
+                      ),
+                    ],
                   ),
-                ),
+                  IconButton(
+                      onPressed: () async {
+                        await launchUrlString('tel:${phone}');
+                      },
+                      icon: FaIcon(
+                        FontAwesomeIcons.phone,
+                        color: Colors.white,
+                        size: 15.sp,
+                      ))
+                ],
               ),
             ),
             body: SingleChildScrollView(
-             physics: BouncingScrollPhysics(),
+              physics: BouncingScrollPhysics(),
               child: Padding(
                 padding: EdgeInsets.all(8.0.sp),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width/2,
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      separatorBuilder: (context,index){
-                        return SizedBox(height: 2.h,);
-                      },
-                      itemBuilder: (context, index) {
-                        return Container(
-                          height: 5.h,
-
-                         // width: 1,
-                          child: Center(child: Text(customOrderCubit.messages[index],overflow: TextOverflow.ellipsis,)),
-
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(15.sp),
-                                  bottomRight: Radius.circular(15.sp),
-                                  bottomLeft: Radius.circular(15.sp)),
-                              color: Colors.redAccent.shade100),
-                        );
-                      },
-                      itemCount:customOrderCubit.messages.length,
-                    ),
-                  ),
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  separatorBuilder: (context, index) {
+                    return SizedBox(
+                      height: 2.h,
+                    );
+                  },
+                  itemBuilder: (context, index) {
+                    // return Align(
+                    //   alignment: AlignmentDirectional.topStart,
+                    //   child: Container(
+                    //     //height: 5.h,
+                    //
+                    //    // width: 1,
+                    //     child: Center(child: Text(customOrderCubit.messages[index],overflow: TextOverflow.ellipsis,)),
+                    //
+                    //     decoration: BoxDecoration(
+                    //         borderRadius: BorderRadius.only(
+                    //             topLeft: Radius.circular(15.sp),
+                    //             bottomRight: Radius.circular(15.sp),
+                    //             bottomLeft: Radius.circular(15.sp)),
+                    //         color: Colors.redAccent.shade100),
+                    //   ),
+                    // );
+                    return Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: const BorderRadiusDirectional.only(
+                            bottomEnd: Radius.circular(10),
+                            topEnd: Radius.circular(10),
+                            topStart: Radius.circular(10),
+                          ),
+                        ),
+                        child:
+                            // customOrderCubit.isSent
+                            //     ? Container(
+                            //         height: 16.h,
+                            //         width: 33.w,
+                            //         decoration: BoxDecoration(
+                            //             // border: Border.all(color: Colors.green),
+                            //             borderRadius: BorderRadius.circular(20),
+                            //             image: DecorationImage(
+                            //                 image: FileImage(
+                            //                   customOrderCubit.messages[index],
+                            //                 ),
+                            //                 fit: BoxFit.cover)),
+                            //       )
+                            //     :
+                            Text(
+                          customOrderCubit.messages[index],
+                          style: TextStyle(fontSize: 12.sp),
+                        ),
+                      ),
+                    );
+                  },
+                  itemCount: customOrderCubit.messages.length,
                 ),
               ),
             ),
@@ -186,11 +239,18 @@ class ChatScreen extends StatelessWidget {
                       children: [
                         FloatingActionButton(
                           onPressed: () {
+                            // if (customOrderCubit.pickImage == true) {
+                            //   customOrderCubit.sentImage(customOrderCubit.file);
+                            //   customOrderCubit.clearImage();
+                            // }
+                            //else
+                            //  {
                             messageController.text.isEmpty
                                 ? debugPrint('text')
-                                : print(messageController.text);
-                            customOrderCubit.sentMessage(messageController.text);
+                                : customOrderCubit
+                                    .sentMessage(messageController.text);
                             messageController.clear();
+                            // }
                           },
                           child: FaIcon(
                             FontAwesomeIcons.paperPlane,

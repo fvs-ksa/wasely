@@ -3,22 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/all_meals_cubit/cubit.dart';
 import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/cubit/detailsmeal_cubit/cubit.dart';
 import 'package:wasely/cubit/home_cubit/cubit.dart';
 import 'package:wasely/pallette.dart';
-import 'package:wasely/screens/auth_screen/login_screen.dart';
-import 'package:wasely/screens/inner_screen/cart_screens/cart_screen.dart';
-import 'package:wasely/screens/drawer_screen/contact_us.dart';
-import 'package:wasely/screens/inner_screen/custom_order/custom_order.dart';
-import 'package:wasely/screens/inner_screen/custom_order/driver_offer.dart';
-import 'package:wasely/screens/inner_screen/meal_details.dart';
-import 'package:wasely/screens/drawer_screen/notification_screen.dart';
-import 'package:wasely/screens/drawer_screen/order_screen.dart';
-import 'package:wasely/screens/drawer_screen/profile_screen.dart';
-import 'package:wasely/screens/main_screen/home_screen.dart';
 import 'package:wasely/screens/onBorading_screen.dart';
 import 'package:wasely/utils/shared_pref.dart';
 
@@ -72,7 +61,7 @@ class MyApp extends StatelessWidget {
                         Theme.of(context).textTheme,
                       ),
                     ),
-                    home: DriverOfferScreen(),
+                    home: OnBoradingScreen(),
                   );
                 });
               })),

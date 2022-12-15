@@ -33,7 +33,6 @@ class ShimmerLoading extends StatelessWidget {
                   height: 20.h,
                   width: 30.w,
                   decoration: BoxDecoration(
-                      // shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.grey),
                 ),
@@ -61,11 +60,9 @@ class ShimmerLoading extends StatelessWidget {
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * .1,
-                            // height:MediaQuery.of(context).size.height*.30 ,
                             height: 10.sp,
                             color: Colors.grey,
                           ),
-                          // Text('${distance.toString()} كم')
                         ],
                       ),
                       SizedBox(
@@ -74,11 +71,9 @@ class ShimmerLoading extends StatelessWidget {
 
                       Container(
                         width: MediaQuery.of(context).size.width * .12,
-                        // height:MediaQuery.of(context).size.height*.30 ,
                         height: 10.sp,
                         color: Colors.grey,
                       ),
-                      //Text('  ',style: TextStyle(color: Colors.grey,fontSize: 15,fontWeight: FontWeight.w700),)
                     ],
                   ),
                 ),

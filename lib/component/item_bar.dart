@@ -5,7 +5,6 @@ import 'package:wasely/cubit/cubit.dart';
 
 class ItemBar extends StatelessWidget {
   late Color backgroundColor;
-
   late String title;
   late int indexItem;
   late Color textColor;

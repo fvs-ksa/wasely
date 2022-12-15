@@ -23,17 +23,12 @@ class ShimmerLoadingMeals extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.all(10),
-                    // padding: EdgeInsets.all(8),
                     height: 20.h,
-
                     decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(20),
-
-                      //image: DecorationImage(image: image,fit: BoxFit.cover,)
                     ),
                   ),
-                  //SizedBox(height: 10,),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: Row(

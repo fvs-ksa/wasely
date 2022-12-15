@@ -36,7 +36,7 @@ class _OtpScreenState extends State<OtpScreen> {
               children: [
                 headerContainer(
                   context: context,
-                  text:  'جاري ارسال كود تحقق',
+                  text: 'جاري ارسال كود تحقق',
                 ),
                 SizedBox(
                   height: 4.h,
@@ -53,36 +53,38 @@ class _OtpScreenState extends State<OtpScreen> {
                         SizedBox(
                           height: 3.h,
                         ),
-
-
                         OTPTextField(
                           length: 4,
                           width: MediaQuery.of(context).size.width * .85,
-                          otpFieldStyle: OtpFieldStyle(backgroundColor: Colors.white),
+                          otpFieldStyle:
+                              OtpFieldStyle(backgroundColor: Colors.white),
                           fieldWidth: 50,
-                        //  spaceBetween: 5.sp,
+                          //  spaceBetween: 5.sp,
 
                           keyboardType: TextInputType.phone,
                           style: TextStyle(fontSize: 15.sp),
-                          onCompleted: (v){
-                            if(v.isEmpty){
-                               'من فضلك ادخل الكود المكون من 4 ارقام';
+                          onCompleted: (v) {
+                            if (v.isEmpty) {
+                              'من فضلك ادخل الكود المكون من 4 ارقام';
                             }
-
                           },
                           textFieldAlignment: MainAxisAlignment.spaceAround,
                           fieldStyle: FieldStyle.box,
-                         // obscureText: true,
                         ),
-
                         SizedBox(
                           height: 4.h,
                         ),
-                        mainButton(width: 50.w,text: ' تحقق', color: amberColor, context: context, fct: () {
-                          if (key.currentState!.validate()) {
-                            navigateAndReplacement(context: context, child: HomeScreen());
-                          }
-                        }),
+                        mainButton(
+                            width: 50.w,
+                            text: ' تحقق',
+                            color: amberColor,
+                            context: context,
+                            fct: () {
+                              if (key.currentState!.validate()) {
+                                navigateAndReplacement(
+                                    context: context, child: HomeScreen());
+                              }
+                            }),
                       ],
                     ),
                   ),

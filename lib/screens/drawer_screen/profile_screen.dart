@@ -17,7 +17,6 @@ TextEditingController nameController=TextEditingController(text: 'جلال');
         body: Padding(
           padding:  EdgeInsets.only(top: 8.0.sp),
           child: Column(
-           // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Align(
                 alignment: Alignment.topCenter,

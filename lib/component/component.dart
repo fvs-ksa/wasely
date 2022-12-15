@@ -39,7 +39,6 @@ Widget textFormField(
           fillColor: Colors.white,
           suffixIcon: Icon(child),
           hintTextDirection: TextDirection.rtl,
-
           hintText: text,
           hintStyle: const TextStyle(
             fontSize: 15,
@@ -146,7 +145,6 @@ Widget mainButton(
           BoxDecoration(color: color, borderRadius: BorderRadius.circular(15)),
     ),
   );
-
 }
 
 Widget containerOfDrawer(
@@ -196,8 +194,7 @@ Widget mainContainer(
       },
       child: Container(
         height: heightMainContainer,
-        decoration: BoxDecoration(
-            ),
+        decoration: BoxDecoration(),
         child: Row(
           children: [
             Padding(
@@ -260,16 +257,12 @@ Widget mainContainer(
     ),
   );
 }
-showLoaderDialog({required BuildContext context }) {
+
+showLoaderDialog({required BuildContext context}) {
   AlertDialog alertDialog = AlertDialog(
-
     insetPadding: EdgeInsets.symmetric(horizontal: 100.sp),
-
-    // contentPadding: EdgeInsets.zero,
-    // clipBehavior: Clip.antiAliasWithSaveLayer,
     content: Builder(builder: (context) {
       return Container(
-        //  width: 80,
         height: 50.sp,
         child: Center(child: CircularProgressIndicator()),
       );
@@ -277,12 +270,12 @@ showLoaderDialog({required BuildContext context }) {
   );
   showDialog(
       barrierDismissible: false,
-
       context: context,
       builder: (context) {
         return alertDialog;
       });
 }
+
 Widget text({required String title}) {
   return Align(
     alignment: Alignment.topRight,
@@ -375,8 +368,7 @@ Widget payWidget(
 }
 
 Widget mealsContainer(
-    {
-    required NetworkImage image,
+    {required NetworkImage image,
     required String mealName,
     required double price}) {
   return Padding(
@@ -395,7 +387,6 @@ Widget mealsContainer(
               Container(
                 margin: EdgeInsets.all(10),
                 height: 20.h,
-
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -430,7 +421,7 @@ navigateAndReplacement({required BuildContext context, required Widget child}) {
       .pushReplacement(MaterialPageRoute(builder: (context) => child));
 }
 
-Widget notifiContainer() {
+Widget notifyContainer() {
   return Container(
       height: 10.8.h,
       decoration: BoxDecoration(
@@ -449,8 +440,9 @@ Widget notifiContainer() {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/app icon.png')),
+                  fit: BoxFit.cover,
+                  image: AssetImage('assets/app icon.png'),
+                ),
               ),
             ),
           ),

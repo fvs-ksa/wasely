@@ -8,3 +8,4 @@ class ChangePayCreditOrderState extends CustomOrderState{}
 class GetCurrentAddressForCustomOrderSuccessState extends CustomOrderState{}
 class GetCurrentAddressForCustomOrderLoadingState extends CustomOrderState{}
 class SentMessageSuccessState extends CustomOrderState{}
+class SentImageSuccessState extends CustomOrderState{}

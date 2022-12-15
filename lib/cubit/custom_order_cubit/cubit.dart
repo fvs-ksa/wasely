@@ -1,5 +1,8 @@
 
 
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io';
@@ -59,11 +62,29 @@ class CustomOrderCubit extends Cubit<CustomOrderState>{
     }
 
   }
-  List<String> messages = [];
+  List<dynamic> messages = [];
+ //static String? textMessage;
   sentMessage(String message)async{
+  //  textMessage=message;
     messages.add(message);
  emit(SentMessageSuccessState());
 }
+// List<File>images=[];
+  bool isSent=false;
+//   String? photo;
+  sentImage(File? image)async{
+    isSent=true;
+   // photo=image?.path;
+    messages.add(image);
+
+    print(messages.length);;
+    emit(SentImageSuccessState());
+    isSent=false;
+
+    // Uint8List? bytes = image?.readAsBytesSync();
+    // String base64Image = base64Encode(bytes!);
+    // print(base64Image);
+  }
 
 
   late Position position;

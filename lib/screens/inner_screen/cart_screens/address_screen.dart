@@ -47,7 +47,6 @@ class _AddressScreenState extends State<AddressScreen> {
                       height: 22.h,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(widget.mealName),
                         SizedBox(width: 28.w,),
