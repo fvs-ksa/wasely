@@ -7,7 +7,9 @@ import 'package:wasely/cubit/all_meals_cubit/cubit.dart';
 import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/cubit/detailsmeal_cubit/cubit.dart';
 import 'package:wasely/cubit/home_cubit/cubit.dart';
+import 'package:wasely/cubit/order_details_cubit/cubit.dart';
 import 'package:wasely/pallette.dart';
+import 'package:wasely/screens/main_screen/home_screen.dart';
 import 'package:wasely/screens/onBorading_screen.dart';
 import 'package:wasely/utils/shared_pref.dart';
 
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider<GeneralCubit>(
                 create: (context) => GeneralCubit()..initialization()),
+            BlocProvider<OrderDetailsCubit>(
+                create: (context) => OrderDetailsCubit()..getCurrentLocation()..addMarkers()),
             BlocProvider<AllMealsCubit>(
                 create: (context) =>
                     AllMealsCubit()..loadAllMealsShimmerData()),
@@ -61,7 +65,7 @@ class MyApp extends StatelessWidget {
                         Theme.of(context).textTheme,
                       ),
                     ),
-                    home: OnBoradingScreen(),
+                    home: HomeScreen(),
                   );
                 });
               })),

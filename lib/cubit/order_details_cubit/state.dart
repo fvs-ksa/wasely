@@ -1,0 +1,5 @@
+abstract class OrderDetailsState{}
+class InitialOrderDetailsState extends OrderDetailsState{}
+class GetCurrentLocOrderDetailsSuccessState extends OrderDetailsState{}
+class GetCurrentLocOrderDetailsLoadingState extends OrderDetailsState{}
+class AddDriverMarkerState extends OrderDetailsState{}
