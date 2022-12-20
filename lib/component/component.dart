@@ -464,7 +464,7 @@ Widget notifyContainer() {
                   SizedBox(
                     height: 1.h,
                   ),
-                  Text('تم قبول طلبك')
+                  Text('تم قبول طلبك'),
                 ],
               ),
             ),
