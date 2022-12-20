@@ -36,7 +36,7 @@ class CustomOrderCubit extends Cubit<CustomOrderState>{
     file=(File(pickedFile!.path));
     pickImage=true;
     emit(PickGalleryImageCustomOrderState());
-   // Navigator.pop(context);
+   Navigator.pop(context);
   }
   clearImage(){
     pickImage=false;
@@ -62,29 +62,7 @@ class CustomOrderCubit extends Cubit<CustomOrderState>{
     }
 
   }
-  List<dynamic> messages = [];
- //static String? textMessage;
-  sentMessage(String message)async{
-  //  textMessage=message;
-    messages.add(message);
- emit(SentMessageSuccessState());
-}
-// List<File>images=[];
-  bool isSent=false;
-//   String? photo;
-  sentImage(File? image)async{
-    isSent=true;
-   // photo=image?.path;
-    messages.add(image);
 
-    print(messages.length);;
-    emit(SentImageSuccessState());
-    isSent=false;
-
-    // Uint8List? bytes = image?.readAsBytesSync();
-    // String base64Image = base64Encode(bytes!);
-    // print(base64Image);
-  }
 
 
   late Position position;
@@ -144,7 +122,9 @@ static List<DriverOfferModel> driver=[];
 
   Stream<List<DriverOfferModel>?> generateNumbers = (() async* {
     await Future<void>.delayed(Duration(seconds: 5));
+
     driver=List.of(driverOffer);
+
     yield driver;
     // for (int i = 1; i <= 5; i++) {
     //
@@ -154,5 +134,30 @@ static List<DriverOfferModel> driver=[];
     //   print(driver[i].price);
     //   yield driver;
     // }
-  })();
+  } )();
+
+  Future<List<DriverOfferModel>> generateNumbers1 ()async{
+    await Future<void>.delayed(Duration(seconds: 5));
+
+    driver=List.of(driverOffer);
+
+    return driver;
+  }
+  // = (() async* {
+  //
+  //   // for (int i = 1; i <= 5; i++) {
+  //   //
+  //   //   await Future<void>.delayed(Duration(seconds: 4));
+  //   //
+  //   //   print(i);
+  //   //   print(driver[i].price);
+  //   //   yield driver;
+  //   // }
+  // } )();
+
+
+
+  // void cancelStream(){
+  //   generateNumbers.
+  // }
 }

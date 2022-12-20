@@ -12,11 +12,19 @@ import '../../../cubit/custom_order_cubit/cubit.dart';
 import '../../../cubit/custom_order_cubit/state.dart';
 import 'chat_screen.dart';
 
-class DriverOfferScreen extends StatelessWidget {
+class DriverOfferScreen extends StatefulWidget {
   DriverOfferScreen({Key? key}) : super(key: key);
 
-  List<int> items = [];
+  @override
+  State<DriverOfferScreen> createState() => _DriverOfferScreenState();
+}
 
+class _DriverOfferScreenState extends State<DriverOfferScreen> {
+  List<int> items = [];
+@override
+  // void dispose() {
+  // CustomOrderCubit.get(context).generateNumbers.
+  // }
   @override
   Widget build(BuildContext context) {
     var cubit = CustomOrderCubit.get(context);
@@ -26,15 +34,18 @@ class DriverOfferScreen extends StatelessWidget {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
+
             backgroundColor: Colors.white70,
             appBar: AppBar(
+              actions: [IconButton(onPressed: (){cubit.generateNumbers1();}, icon: Icon(Icons.refresh))],
               title: const Text('عروض السائقين'),
             ),
             body: SizedBox(
               width: double.infinity,
               child: Center(
-                child: StreamBuilder(
-                  stream: cubit.generateNumbers,
+                child: FutureBuilder(
+                  future: cubit.generateNumbers1(),
+
                   initialData: 'برجاء الانتظار حتى ياتيك الرد من قبل السائقين',
                   builder: (
                     BuildContext context,

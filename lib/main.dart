@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wasely/cubit/all_meals_cubit/cubit.dart';
 import 'package:wasely/cubit/auth_cubit/auth_cubit.dart';
+import 'package:wasely/cubit/chat_cubit/cubit.dart';
 import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/cubit/detailsmeal_cubit/cubit.dart';
 import 'package:wasely/cubit/home_cubit/cubit.dart';
@@ -39,23 +40,10 @@ void main() async {
     print(token.toString());
     widget=HomeScreen();
   }
-
-
-//   String token1=CacheHelper.getData(key: 'token');
-// if(onBoarding !=null){
-//   if(token1 !=null) widget=HomeScreen();
-//   else widget=LoginScreen();
-// }else{
-//   widget =OnBoradingScreen();
-// }
-
    runApp( MyApp(startWidget: widget,));
-  // runApp( MyApp(onBoarding: onBoarding,));
 }
 
 class MyApp extends StatelessWidget {
-  // final bool onBoarding;
-  // MyApp({required this.onBoarding});
   final Widget startWidget;
   const MyApp({super.key,required this.startWidget});
 
@@ -70,8 +58,8 @@ class MyApp extends StatelessWidget {
                 create: (context) => GeneralCubit()..initialization()..getUserCurrentLocation()),
             BlocProvider<AuthCubit>(
                 create: (context) => AuthCubit()),
-            // BlocProvider<LoginCubit>(
-            //     create: (context) => LoginCubit()),
+            BlocProvider<ChatCubit>(
+                create: (context) => ChatCubit()),
             BlocProvider<OrderDetailsCubit>(
                 create: (context) => OrderDetailsCubit()..getCurrentLocation()..addMarkers()),
             BlocProvider<AllMealsCubit>(

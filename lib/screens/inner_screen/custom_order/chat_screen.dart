@@ -5,6 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:wasely/component/const_color.dart';
+import 'package:wasely/cubit/chat_cubit/cubit.dart';
+import 'package:wasely/cubit/chat_cubit/state.dart';
 
 import '../../../cubit/custom_order_cubit/cubit.dart';
 import '../../../cubit/custom_order_cubit/state.dart';
@@ -50,8 +52,8 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var customOrderCubit = CustomOrderCubit.get(context);
-    return BlocConsumer<CustomOrderCubit, CustomOrderState>(
+    var chatCubit = ChatCubit.get(context);
+    return BlocConsumer<ChatCubit, ChatState>(
       listener: (context, state) {},
       builder: (context, state) {
         return Directionality(
@@ -144,28 +146,14 @@ class ChatScreen extends StatelessWidget {
                           ),
                         ),
                         child:
-                            // customOrderCubit.isSent
-                            //     ? Container(
-                            //         height: 16.h,
-                            //         width: 33.w,
-                            //         decoration: BoxDecoration(
-                            //             // border: Border.all(color: Colors.green),
-                            //             borderRadius: BorderRadius.circular(20),
-                            //             image: DecorationImage(
-                            //                 image: FileImage(
-                            //                   customOrderCubit.messages[index],
-                            //                 ),
-                            //                 fit: BoxFit.cover)),
-                            //       )
-                            //     :
                             Text(
-                          customOrderCubit.messages[index],
+                              chatCubit.messages[index],
                           style: TextStyle(fontSize: 12.sp),
                         ),
                       ),
                     );
                   },
-                  itemCount: customOrderCubit.messages.length,
+                  itemCount: chatCubit.messages.length,
                 ),
               ),
             ),
@@ -175,13 +163,13 @@ class ChatScreen extends StatelessWidget {
                   right: 5.w,
                   left: 5.w),
               child: Container(
-                height: customOrderCubit.pickImage ? 32.h : 12.h,
+                height: chatCubit.pickImage ? 32.h : 12.h,
                 width: MediaQuery.of(context).size.width,
                 // color: Colors.green,
                 child: Column(
                   children: [
                     //Spacer(flex: 1,),
-                    customOrderCubit.pickImage
+                    chatCubit.pickImage
                         ? Stack(
                             children: [
                               Align(
@@ -204,7 +192,7 @@ class ChatScreen extends StatelessWidget {
                                                   BorderRadius.circular(20),
                                               image: DecorationImage(
                                                   image: FileImage(
-                                                    customOrderCubit.file!,
+                                                    chatCubit.file!,
                                                   ),
                                                   fit: BoxFit.cover)),
                                         ),
@@ -214,7 +202,7 @@ class ChatScreen extends StatelessWidget {
                                         left: 1.5.w,
                                         child: GestureDetector(
                                           onTap: () {
-                                            customOrderCubit.clearImage();
+                                            chatCubit.clearImage();
                                           },
                                           child: CircleAvatar(
                                               radius: 10.sp,
@@ -247,7 +235,7 @@ class ChatScreen extends StatelessWidget {
                             //  {
                             messageController.text.isEmpty
                                 ? debugPrint('text')
-                                : customOrderCubit
+                                : chatCubit
                                     .sentMessage(messageController.text);
                             messageController.clear();
                             // }
@@ -269,7 +257,7 @@ class ChatScreen extends StatelessWidget {
                               hintText: 'رساله',
                               prefixIcon: IconButton(
                                   onPressed: () {
-                                    customOrderCubit.pickGalleryImage(context);
+                                    chatCubit.pickGalleryImage(context);
                                     print('object');
                                   },
                                   icon:
