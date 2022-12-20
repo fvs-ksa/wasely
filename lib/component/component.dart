@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wasely/cubit/custom_order_cubit/cubit.dart';
@@ -470,4 +471,29 @@ Widget notifyContainer() {
           ),
         ],
       ));
+}
+void showToast({required String text,required ToastState state})=>Fluttertoast.showToast(
+    msg: text,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    backgroundColor: chooseColor(state),
+    textColor: Colors.white,
+    fontSize: 16.0.sp
+);
+enum ToastState{SUCCESS,WARNING,ERROR}
+Color chooseColor(ToastState state){
+  Color color;
+  switch (state)
+  {
+    case ToastState.ERROR:
+      color=Colors.red;
+      break;
+    case ToastState.SUCCESS:color=Colors.green;
+    break;
+    case ToastState.WARNING:color=yellowColor;
+    break;
+
+  }
+  return color;
 }

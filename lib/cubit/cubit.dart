@@ -6,16 +6,15 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/state.dart';
+import 'package:wasely/services/base_url.dart';
+import 'package:wasely/services/dio_helper.dart';
 import 'package:wasely/utils/shared_pref.dart';
 
-class GeneralCubit extends Cubit<GeneralState>{
-  GeneralCubit():super(GeneralInitState());
-  static GeneralCubit get(BuildContext context)=>BlocProvider.of(context);
-  bool isRegister=true;
-  void changeAuthState(){
-    isRegister=!isRegister;
-    emit(ChangeAuthState());
-  }
+class GeneralCubit extends Cubit<GeneralState> {
+  GeneralCubit() : super(GeneralInitState());
+
+  static GeneralCubit get(BuildContext context) => BlocProvider.of(context);
+
   void initialization() async {
     // This is where you can initialize the resources needed by your app while
     // the splash screen is displayed.  Remove the following example because
@@ -29,23 +28,25 @@ class GeneralCubit extends Cubit<GeneralState>{
     FlutterNativeSplash.remove();
     emit(NativeSplashState());
   }
-  int indexTab=0;
-  void changeIndexTab({required var value}){
-    indexTab=value;
+
+  int indexTab = 0;
+
+  void changeIndexTab({required var value}) {
+    indexTab = value;
     print('object');
     emit(ChangeTabBarState());
-
   }
+
   bool isLastFirstBoarding = false;
-  changeFirstBoarding(){
-    isLastFirstBoarding=true;
+
+  changeFirstBoarding() {
+    isLastFirstBoarding = true;
     emit(ChangeFirstLastState());
   }
 
-
   late Position position;
   var first;
-  bool isLoading=false;
+  bool isLoading = false;
   String? address;
 
   Future<Position> determinePosition() async {
@@ -69,29 +70,71 @@ class GeneralCubit extends Cubit<GeneralState>{
     return Geolocator.getCurrentPosition();
   }
 
-  void getPlace(Position pos) async {
-
-    List<Placemark> newPlace =
-    await placemarkFromCoordinates(pos.latitude, pos.longitude,localeIdentifier: 'ar');
+  Future<void> getPlace(Position pos) async {
+    List<Placemark> newPlace = await placemarkFromCoordinates(
+        pos.latitude, pos.longitude,
+        localeIdentifier: 'ar');
     Placemark placeMark = newPlace[0];
     String name = placeMark.name.toString();
     String street = placeMark.street.toString();
     String subLocality = placeMark.subLocality.toString();
     String locality = placeMark.locality.toString();
-    String postalCode=placeMark.postalCode.toString();
-    String country=placeMark.country.toString();
-    String administrativeArea=placeMark.administrativeArea.toString();
-    address=subLocality+','+street+','+locality+','+postalCode+','+administrativeArea+','+country+','+name;
-    isLoading=true;
+    String postalCode = placeMark.postalCode.toString();
+    String country = placeMark.country.toString();
+    String administrativeArea = placeMark.administrativeArea.toString();
+    address = subLocality +
+        ',' +
+        street +
+        ',' +
+        locality +
+        ',' +
+        postalCode +
+        ',' +
+        administrativeArea +
+        ',' +
+        country +
+        ',' +
+        name;
+    isLoading = true;
 
     print(address);
-    currentLocation=address.toString();
-    CacheHelper.putData(key: 'address', value: currentLocation);
+    print(pos.latitude);
+    print(pos.longitude);
+    currentLocation = address.toString();
+    
+    //  CacheHelper.putData(key: 'address', value: currentLocation);
     emit(GetCurrentAddressSuccessState());
-  }
-  void getUserCurrentLocation()async{
-    emit(GetCurrentAddressLoadingState());
-    await determinePosition().then((value)=>getPlace(value));
+    addAddress(address: address!, lat: pos.latitude, lng: pos.longitude);
   }
 
+  void getUserCurrentLocation() async {
+    emit(GetCurrentAddressLoadingState());
+    await determinePosition().then((value) => getPlace(value));
+  }
+
+  void addAddress(
+      {required String address, required double lat, required double lng}) {
+    emit(AddAddressLoadingState());
+    DioHelper.postData(
+      url: BaseUrl.addAddress,
+      data: {
+        'address': address,
+        'latitude': lat,
+        // "token":'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9..ICxwqgPzAGyG0ZsaIqdhMdHrXNQ-BtB2Kf7JZ9C5UHaMjnKlnQ9QnJWCmKuGetaqwbVtBHd14MnWtSf-wp9CkgebDFoQdxElM',
+        'longitude': lng,
+      },
+      token: CacheHelper.getData(key: 'token'),
+    ).then((value) {
+      print(value.data);
+      emit(AddAddressSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(AddAddressErrorState(error: error.toString()));
+    });
+  }
+  void getBanners(){
+    DioHelper.getData(url: BaseUrl.getBanners, query: {
+
+    });
+  }
 }

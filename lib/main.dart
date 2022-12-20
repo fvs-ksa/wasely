@@ -4,13 +4,17 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wasely/cubit/all_meals_cubit/cubit.dart';
+import 'package:wasely/cubit/auth_cubit/auth_cubit.dart';
 import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/cubit/detailsmeal_cubit/cubit.dart';
 import 'package:wasely/cubit/home_cubit/cubit.dart';
 import 'package:wasely/cubit/order_details_cubit/cubit.dart';
 import 'package:wasely/pallette.dart';
+import 'package:wasely/screens/auth_screen/login_screen.dart';
 import 'package:wasely/screens/main_screen/home_screen.dart';
 import 'package:wasely/screens/onBorading_screen.dart';
+import 'package:wasely/services/base_url.dart';
+import 'package:wasely/services/dio_helper.dart';
 import 'package:wasely/utils/shared_pref.dart';
 
 import 'bloc_observe.dart';
@@ -20,15 +24,40 @@ import 'cubit/state.dart';
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  Bloc.observer = MyBlocObserver();
-  //await BlocConsumer<GeneralCubit,GeneralState>(builder: (context,state){return Text('data');},listener: (context,state){},);
-  // currentLocation=CacheHelper.getData(key: 'address');
   await CacheHelper.init();
-  runApp(const MyApp());
+  Bloc.observer = MyBlocObserver();
+ await DioHelper.init();
+  Widget widget;
+  if(CacheHelper.getData(key: 'onBoarding')==null){
+    widget=OnBoradingScreen();
+  }else if(CacheHelper.getData(key: 'onBoarding')==true &&CacheHelper.getData(key: 'token')==null ){
+    bool onBoarding=CacheHelper.getData(key: 'onBoarding');
+    print(onBoarding);
+    widget=LoginScreen();
+  }else{
+    token=CacheHelper.getData(key: 'token');
+    print(token.toString());
+    widget=HomeScreen();
+  }
+
+
+//   String token1=CacheHelper.getData(key: 'token');
+// if(onBoarding !=null){
+//   if(token1 !=null) widget=HomeScreen();
+//   else widget=LoginScreen();
+// }else{
+//   widget =OnBoradingScreen();
+// }
+
+   runApp( MyApp(startWidget: widget,));
+  // runApp( MyApp(onBoarding: onBoarding,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  // final bool onBoarding;
+  // MyApp({required this.onBoarding});
+  final Widget startWidget;
+  const MyApp({super.key,required this.startWidget});
 
   // This widget is the root of your application.
   @override
@@ -38,7 +67,11 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
           providers: [
             BlocProvider<GeneralCubit>(
-                create: (context) => GeneralCubit()..initialization()),
+                create: (context) => GeneralCubit()..initialization()..getUserCurrentLocation()),
+            BlocProvider<AuthCubit>(
+                create: (context) => AuthCubit()),
+            // BlocProvider<LoginCubit>(
+            //     create: (context) => LoginCubit()),
             BlocProvider<OrderDetailsCubit>(
                 create: (context) => OrderDetailsCubit()..getCurrentLocation()..addMarkers()),
             BlocProvider<AllMealsCubit>(
@@ -65,7 +98,7 @@ class MyApp extends StatelessWidget {
                         Theme.of(context).textTheme,
                       ),
                     ),
-                    home: HomeScreen(),
+                    home:startWidget,
                   );
                 });
               })),

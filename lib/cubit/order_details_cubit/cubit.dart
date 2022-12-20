@@ -18,9 +18,9 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
   void getCurrentLocation() async {
     emit(GetCurrentLocOrderDetailsLoadingState());
     position = await GeolocatorPlatform.instance.getCurrentPosition();
-
     print(position.latitude);
     emit(GetCurrentLocOrderDetailsSuccessState());
+
   }
   Set<Marker> markers = Set();
   Future<Uint8List> getBytesFromAsset({required String path, required int width}) async {
@@ -32,12 +32,17 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
         .buffer
         .asUint8List();
   }
-  late final Uint8List customMarkerBlack;
+  late final Uint8List customMarkerDriver;
+  late final Uint8List customMarkerRestaurant;
   addMarkers() async {
-     customMarkerBlack = await getBytesFromAsset(
-        path: 'assets/images/blackpin.png', //paste the custom image path
+    customMarkerDriver = await getBytesFromAsset(
+        path: 'assets/car.png', //paste the custom image path
         width: 100 // size of custom image as marker
     );
+    customMarkerRestaurant = await getBytesFromAsset(
+         path: 'assets/restaurantLogo.png', //paste the custom image path
+         width: 100 // size of custom image as marker
+     );
     markers.add(
         Marker( //add start location marker
           markerId: MarkerId('driver'),
@@ -46,11 +51,23 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
             title: 'Starting Point ',
             snippet: 'Start Marker',
           ),
-          icon: BitmapDescriptor.fromBytes(customMarkerBlack), //Icon for Marker
+          icon: BitmapDescriptor.fromBytes(customMarkerDriver), //Icon for Marker
         ),
 
     );
-     emit(AddDriverMarkerState());
+     markers.add(
+       Marker( //add start location marker
+         markerId: MarkerId('restaurant'),
+         position: LatLng(21.562475, 39.178850), //position of marker
+         infoWindow: InfoWindow( //popup info
+           title: 'Starting Point ',
+           snippet: 'Start Marker',
+         ),
+         icon: BitmapDescriptor.fromBytes(customMarkerRestaurant), //Icon for Marker
+       ),
+
+     );
+    // emit(AddDriverMarkerState());
   }
 
 

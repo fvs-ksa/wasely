@@ -1,9 +1,14 @@
 abstract class GeneralState{}
 class GeneralInitState extends GeneralState {}
-class ChangeAuthState extends GeneralState{}
 class NativeSplashState extends GeneralState{}
 class ChangeTabBarState extends GeneralState{}
 class ChangeFirstLastState extends GeneralState{}
+class AddAddressLoadingState extends GeneralState{}
+class AddAddressSuccessState extends GeneralState{}
+class AddAddressErrorState extends GeneralState{
+  final String error;
+  AddAddressErrorState({required this.error});
+}
 class GetCurrentAddressSuccessState extends GeneralState{}
 class GetCurrentAddressLoadingState extends GeneralState{}
 class GetCurrentAddressErrorState extends GeneralState{

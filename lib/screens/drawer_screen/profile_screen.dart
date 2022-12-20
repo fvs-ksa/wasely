@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wasely/component/component.dart';
 import 'package:wasely/component/const_color.dart';
+import 'package:wasely/screens/auth_screen/login_screen.dart';
+import 'package:wasely/utils/shared_pref.dart';
 
 class ProfileScreen extends StatelessWidget {
 
@@ -36,13 +38,22 @@ TextEditingController nameController=TextEditingController(text: 'جلال');
                  FaIcon(FontAwesomeIcons.signOut,color: amberColor,),
                ],
              ),SizedBox(height: 2.h,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('حذف الحساب',style: TextStyle(color: redColor,fontSize: 14.sp),),
-                  SizedBox(width: 1.w,),
-                  FaIcon(FontAwesomeIcons.x,color: redColor,),
-                ],
+              InkWell(
+                onTap: (){
+                  CacheHelper.removeData(key: 'token').then((value){
+                    if(value){
+                      navigateTo(context: context, child: LoginScreen());
+                    }
+                  });
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('حذف الحساب',style: TextStyle(color: redColor,fontSize: 14.sp),),
+                    SizedBox(width: 1.w,),
+                    FaIcon(FontAwesomeIcons.x,color: redColor,),
+                  ],
+                ),
               ),
              // Text('جلال'),
              // Text('+996506977241')

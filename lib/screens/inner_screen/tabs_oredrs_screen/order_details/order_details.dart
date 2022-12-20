@@ -27,7 +27,8 @@ class OrderDetails extends StatelessWidget {
           appBar: AppBar(
             title: Text('تفاصيل طلبك'),
           ),
-          body: state is GetCurrentLocOrderDetailsLoadingState
+          body: state is GetCurrentLocOrderDetailsLoadingState ||
+                  state is AddDriverMarkerState
               ? Center(
                   child: CircularProgressIndicator.adaptive(),
                 )
@@ -36,25 +37,51 @@ class OrderDetails extends StatelessWidget {
                       EdgeInsets.symmetric(horizontal: 5.0.w, vertical: 2.h),
                   child: Column(
                     children: [
+                      Card(
+                        elevation: 3,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 2.w),
+                          height: 8.h,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 10.sp,
+                                child: Center(
+                                  child: Text('1'),
+                                ),
+                              ),
+                              SizedBox(width: 2.w,),
+                              Text('تم تلقي طلبك'),
+                             SizedBox(width: 5.w,),
+                              CircleAvatar(
+                                radius: 10.sp,
+                                child: Center(
+                                  child: Text('2'),
+                                ),
+                              ),
+                              SizedBox(width: 2.w,),
+                              Text('تم تلقي طلبك'),
+                              SizedBox(width: 5.w,),
+                              CircleAvatar(
+                                radius: 10.sp,
+                                child: Center(
+                                  child: Text('2'),
+                                ),
+                              ),
+                              SizedBox(width: 2.w,),
+                              Text('تم تلقي طلبك'),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 3.h,),
                       Container(
                         height: 40.h,
                         width: double.infinity,
                         child: GoogleMap(
-
-                          // scrollGesturesEnabled: false,
-                          // rotateGesturesEnabled: false,
-                          // mapToolbarEnabled: false,
-                          // myLocationButtonEnabled: false,
-                          // myLocationEnabled: false,
-                          // compassEnabled: false,
-                          // indoorViewEnabled: false,
-                          // trafficEnabled: false,
-                          // buildingsEnabled: false,
-                          // zoomGesturesEnabled: false,
-                          // zoomControlsEnabled: false,
                           myLocationButtonEnabled: true,
                           myLocationEnabled: true,
-
                           onMapCreated: (googleController) {
                             controller = googleController;
                           },
@@ -85,7 +112,8 @@ class OrderDetails extends StatelessWidget {
                                   height: 20.h,
                                   width: double.infinity,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'معلومات السائق',
@@ -127,86 +155,243 @@ class OrderDetails extends StatelessWidget {
                               SizedBox(
                                 height: 2.h,
                               ),
-                              Container(
-                                height: 20.h,
-                                width: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Text('معلومات المطعم'),
-                                    Divider(
-                                      thickness: 2,
-                                      endIndent: 2.w,
-                                      indent: 2.w,
-                                    ),
-                                    Text('مطعم كنتاكي'),
-                                    Row(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.location_on_outlined,
-                                              color: redColor,
-                                            ),
-                                            Text('شارع رشيد'),
-                                          ],
-                                        ),
-                                        Container(
-                                          height: 10.h,
-                                          width: 15.w,
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  image: NetworkImage(
-                                                      'https://cdn4.premiumread.com/?url=https://alyaum.com/uploads/images/2021/03/07/1005793.png&w=500&q=72&f=jpg'))),
-                                        )
-                                      ],
-                                    )
-                                  ],
+                              Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.w, vertical: 2.h),
+                                  height: 17.h,
+                                  width: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'معلومات الوجبه',
+                                        style: TextStyle(
+                                            fontSize: 12.sp, color: redColor),
+                                      ),
+                                      Divider(
+                                        thickness: 2,
+                                        endIndent: 1.w,
+                                        indent: 1.w,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('ساندوتش العائله'),
+                                          SizedBox(
+                                            width: 5.w,
+                                          ),
+                                          Text(
+                                            'x 2',
+                                            style: TextStyle(color: redColor),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 1.h,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('بيبس'),
+                                          SizedBox(
+                                            width: 5.w,
+                                          ),
+                                          Text(
+                                            'x 2',
+                                            style: TextStyle(color: redColor),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               SizedBox(
                                 height: 2.h,
                               ),
-                              Container(
-                                height: 20.h,
-                                width: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Text('معلومات المطعم'),
-                                    Divider(
-                                      thickness: 2,
-                                      endIndent: 2.w,
-                                      indent: 2.w,
-                                    ),
-                                    Text('مطعم كنتاكي'),
-                                    Row(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.location_on_outlined,
-                                              color: redColor,
-                                            ),
-                                            Text('شارع رشيد'),
-                                          ],
-                                        ),
-                                        Container(
-                                          height: 10.h,
-                                          width: 15.w,
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  image: NetworkImage(
-                                                      'https://cdn4.premiumread.com/?url=https://alyaum.com/uploads/images/2021/03/07/1005793.png&w=500&q=72&f=jpg'))),
-                                        )
-                                      ],
-                                    )
-                                  ],
+                              Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.w, vertical: 2.h),
+                                  height: 22.h,
+                                  width: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'السعر',
+                                        style: TextStyle(
+                                            fontSize: 12.sp, color: redColor),
+                                      ),
+                                      Divider(
+                                        thickness: 2,
+                                        endIndent: 1.w,
+                                        indent: 1.w,
+                                      ),
+
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('سعر الوجبه'),
+                                          SizedBox(
+                                            width: 5.w,
+                                          ),
+                                          Text(
+                                            '100 SAR',
+                                            style: TextStyle(color: redColor),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 1.h,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('توصيل'),
+                                          SizedBox(
+                                            width: 5.w,
+                                          ),
+                                          Text(
+                                            '10 SAR',
+                                            style: TextStyle(color: redColor),
+                                          ),
+                                        ],
+                                      ),
+                                      Divider(
+                                        thickness: 2,
+                                        endIndent: 1.w,
+                                        indent: 1.w,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('الاجمالي'),
+                                          SizedBox(
+                                            width: 5.w,
+                                          ),
+                                          Text(
+                                            '110 SAR',
+                                            style: TextStyle(color: redColor),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 0.5.h,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('طريقه الدفع'),
+                                          SizedBox(
+                                            width: 5.w,
+                                          ),
+                                          Text(
+                                            'كاش',
+                                            style: TextStyle(color: redColor),
+                                          ),
+                                        ],
+                                      ),
+                                      // Text('طريقه الدفع'),
+                                      // Text('كاش')
+                                    ],
+                                  ),
                                 ),
                               ),
+                              // Container(
+                              //   height: 20.h,
+                              //   width: double.infinity,
+                              //   child: Column(
+                              //     children: [
+                              //       Text('معلومات المطعم'),
+                              //       Divider(
+                              //         thickness: 2,
+                              //         endIndent: 2.w,
+                              //         indent: 2.w,
+                              //       ),
+                              //       Text('مطعم كنتاكي'),
+                              //       Row(
+                              //         children: [
+                              //           Row(
+                              //             children: [
+                              //               Icon(
+                              //                 Icons.location_on_outlined,
+                              //                 color: redColor,
+                              //               ),
+                              //               Text('شارع رشيد'),
+                              //             ],
+                              //           ),
+                              //           Container(
+                              //             height: 10.h,
+                              //             width: 15.w,
+                              //             decoration: BoxDecoration(
+                              //                 image: DecorationImage(
+                              //                     image: NetworkImage(
+                              //                         'https://cdn4.premiumread.com/?url=https://alyaum.com/uploads/images/2021/03/07/1005793.png&w=500&q=72&f=jpg'))),
+                              //           )
+                              //         ],
+                              //       )
+                              //     ],
+                              //   ),
+                              // ),
+                              // SizedBox(
+                              //   height: 2.h,
+                              // ),
+                              // Container(
+                              //   height: 20.h,
+                              //   width: double.infinity,
+                              //   child: Column(
+                              //     children: [
+                              //       Text('معلومات المطعم'),
+                              //       Divider(
+                              //         thickness: 2,
+                              //         endIndent: 2.w,
+                              //         indent: 2.w,
+                              //       ),
+                              //       Text('مطعم كنتاكي'),
+                              //       Row(
+                              //         children: [
+                              //           Row(
+                              //             children: [
+                              //               Icon(
+                              //                 Icons.location_on_outlined,
+                              //                 color: redColor,
+                              //               ),
+                              //               Text('شارع رشيد'),
+                              //             ],
+                              //           ),
+                              //           Container(
+                              //             height: 10.h,
+                              //             width: 15.w,
+                              //             decoration: BoxDecoration(
+                              //                 image: DecorationImage(
+                              //                     image: NetworkImage(
+                              //                         'https://cdn4.premiumread.com/?url=https://alyaum.com/uploads/images/2021/03/07/1005793.png&w=500&q=72&f=jpg'))),
+                              //           )
+                              //         ],
+                              //       )
+                              //     ],
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ),

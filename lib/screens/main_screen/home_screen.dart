@@ -60,11 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return BlocConsumer<GeneralCubit, GeneralState>(
       listener: (context, state) {
-        if (state is GetCurrentAddressLoadingState) {
-          return showLoaderDialog(context: context);
-        } else if (state is GetCurrentAddressSuccessState) {
-          Navigator.pop(context);
+        if (state is AddAddressSuccessState) {
+          return showToast(text: 'تم تحديث موقعك بنجاح', state: ToastState.SUCCESS);
         }
+        // else if (state is GetCurrentAddressSuccessState) {
+        //   Navigator.pop(context);
+        // }
       },
       builder: (context, state) {
         return BlocConsumer<HomeCubit, HomeState>(
@@ -96,7 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           left: 0,
                           child: InkWell(
                             onTap: () {
-                              generalCubit.getUserCurrentLocation();
+                             generalCubit.getUserCurrentLocation();
+                             // generalCubit.addAddress(address: currentLocation, lat: generalCubit.position.latitude, lng: generalCubit.position.longitude);
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(horizontal: 3.w),

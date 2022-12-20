@@ -6,8 +6,10 @@ import 'package:wasely/component/component.dart';
 import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/state.dart';
 import 'package:wasely/screens/auth_screen/login_screen.dart';
+import 'package:wasely/utils/shared_pref.dart';
 import '../cubit/cubit.dart';
 import '../model/board_model.dart';
+import '../services/base_url.dart';
 
 class OnBoradingScreen extends StatelessWidget {
   var boardController = PageController();
@@ -29,7 +31,17 @@ class OnBoradingScreen extends StatelessWidget {
         image: Image.asset(model.image),
         secondText: model.secondText);
   }
+ // bool onBoarding=false;
+void submit(BuildContext context){
 
+    CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
+      if(value){
+       // onBoarding=true;
+        navigateAndReplacement(context: context, child: LoginScreen());
+      }
+    });
+
+}
   @override
   Widget build(BuildContext context) {
     var cubit = GeneralCubit.get(context);
@@ -74,7 +86,7 @@ class OnBoradingScreen extends StatelessWidget {
                           SizedBox(height: 5.h,),
                           mainButton(width: 50.w,text: cubit.isLastFirstBoarding?'دخول الان':'التالي', color: redColor, context: context, fct: (){
                             if(cubit.isLastFirstBoarding){
-                              navigateAndReplacement(context: context, child: LoginScreen());
+                              submit(context);
                             }else{
                               boardController.nextPage(duration: Duration(milliseconds: 750), curve:Curves.fastLinearToSlowEaseIn);
                             }
