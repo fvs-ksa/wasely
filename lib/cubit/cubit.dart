@@ -111,7 +111,7 @@ class GeneralCubit extends Cubit<GeneralState> {
     emit(GetCurrentAddressLoadingState());
     await determinePosition().then((value) => getPlace(value));
   }
-
+bool isAddAddress=false;
   void addAddress(
       {required String address, required double lat, required double lng}) {
     emit(AddAddressLoadingState());
@@ -126,6 +126,7 @@ class GeneralCubit extends Cubit<GeneralState> {
       token: CacheHelper.getData(key: 'token'),
     ).then((value) {
       print(value.data);
+      isAddAddress=true;
       emit(AddAddressSuccessState());
     }).catchError((error) {
       print(error.toString());

@@ -13,6 +13,7 @@ import 'package:wasely/model/restaurant_model.dart';
 import 'package:wasely/screens/main_screen/custom_restaurant.dart';
 import '../../component/const_color.dart';
 import '../../component/constant_fonts.dart';
+import '../../shimmer/shimmer_carousel.dart';
 import '../../shimmer/shimmer_loading_home.dart';
 import '../inner_screen/custom_order/custom_order.dart';
 
@@ -152,17 +153,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   textDirection: TextDirection.rtl,
                   child: SingleChildScrollView(
                     physics: BouncingScrollPhysics(),
-                    child: Column(
+                    child:Column(
                       children: [
+                        !generalCubit.isAddAddress?ShimmerCarouselLoading(height: 20.h,):
                         CarouselSlider.builder(
 
                           itemCount: bannerList.length,
                           itemBuilder: (context, int i, int y) {
                             return Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                                 shape: RoundedRectangleBorder(
-                                   borderRadius: BorderRadius.circular(15)
-                                 ),
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)
+                                ),
                                 elevation: 5,
                                 child: Image.asset(bannerList[i],fit: BoxFit.cover,));
                           },
@@ -176,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             reverse: false,
                             autoPlay: true,
                             autoPlayAnimationDuration:
-                                Duration(milliseconds: 800),
+                            Duration(milliseconds: 800),
                             autoPlayInterval: Duration(seconds: 3),
                             enlargeCenterPage: true,
                             autoPlayCurve: Curves.fastLinearToSlowEaseIn,
@@ -186,77 +188,75 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         ),
                         SizedBox(height: 5.h,),
+                        !generalCubit.isAddAddress?ShimmerLoading(height: 20.h,):  Padding(
+                        padding:  EdgeInsets.all(10.0.sp),
+                        child: InkWell(
+                          onTap: () {
+                            navigateTo(context: context, child: CustomOrderScreen());
+                          },
+                          child: Container(
+                            height: 12.h,
+                            decoration: BoxDecoration(
+                              // border: Border.all(),
+                              // borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding:  EdgeInsets.symmetric(horizontal: 0.1.w),
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 1.w),
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    height: 10.h,
+                                    width: 27.w,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        image: DecorationImage(
+                                            fit: BoxFit.fitHeight,
+                                            image: AssetImage('assets/app icon.png')
+                                        )),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5.w,
+                                ),
+                                Padding(
+                                  padding:  EdgeInsets.symmetric(vertical: 2.h),
+                                  child: Container(
+                                    child: Column(
+
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:MainAxisAlignment.spaceBetween ,
+                                          children: [
+                                            Container(
+                                              width:MediaQuery.of(context).size.width*.29,
+                                              child: Text(
+                                                'كل الي تحتاجه',
+                                                style: TextStyle(
+                                                    fontSize: 15.sp),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 2.h,),
+                                        Text('ارفع طلبك مخصوص',style: TextStyle(color: redColor,fontSize: 15,fontWeight: FontWeight.w700),)
+
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                         ListView.separated(
                             physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               if (!homeCubit.isLoadingShimmer) {
-                                if(index==0){
-                                  return Padding(
-                                    padding:  EdgeInsets.all(10.0.sp),
-                                    child: InkWell(
-                                      onTap: () {
-                                          navigateTo(context: context, child: CustomOrderScreen());
-                                      },
-                                      child: Container(
-                                        height: 12.h,
-                                        decoration: BoxDecoration(
-                                          // border: Border.all(),
-                                          // borderRadius: BorderRadius.circular(15),
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Padding(
-                                              padding:  EdgeInsets.symmetric(horizontal: 0.1.w),
-                                              child: Container(
-                                                padding: EdgeInsets.symmetric(horizontal: 1.w),
-                                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                                height: 10.h,
-                                                width: 27.w,
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(15),
-                                                    image: DecorationImage(
-                                                        fit: BoxFit.fitHeight,
-                                                        image: AssetImage('assets/app icon.png')
-                                                    )),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 5.w,
-                                            ),
-                                            Padding(
-                                              padding:  EdgeInsets.symmetric(vertical: 2.h),
-                                              child: Container(
-                                                child: Column(
-
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisAlignment:MainAxisAlignment.spaceBetween ,
-                                                      children: [
-                                                        Container(
-                                                          width:MediaQuery.of(context).size.width*.29,
-                                                          child: Text(
-                                                            'كل الي تحتاجه',
-                                                            style: TextStyle(
-                                                                fontSize: 15.sp),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    SizedBox(height: 2.h,),
-                                                    Text('ارفع طلبك مخصوص',style: TextStyle(color: redColor,fontSize: 15,fontWeight: FontWeight.w700),)
-
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }
                                   return InkWell(
                                       onTap: () {
                                         print(restaurant[index]);
@@ -266,7 +266,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
                               } else {
-                                return ShimmerLoading(height: 200.sp);
+                                return ShimmerLoading(height: 20.h);
                               }
                             },
                             separatorBuilder: (context, index) {

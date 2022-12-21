@@ -79,10 +79,12 @@ class MyApp extends StatelessWidget {
                 return Sizer(builder: (context, orientation, deviceType) {
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
+
                     title: 'وصلي',
                     theme: ThemeData(
+                     // fontFamily: GoogleFonts.elMessiri(),
                       primarySwatch: Palette.kToDark,
-                      textTheme: GoogleFonts.notoNaskhArabicTextTheme(
+                      textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(
                         Theme.of(context).textTheme,
                       ),
                     ),

@@ -28,7 +28,7 @@ class CustomDrawer extends StatelessWidget {
                 navigateTo(context: context, child: ProfileScreen());
                 print('object');
               },
-              text: 'حسابي',iconData: FontAwesomeIcons.person),
+              text: 'حسابي',iconData:Icons.person),
           SizedBox(height: 10.sp,),
           containerOfDrawer(
               fct: () {
@@ -55,7 +55,7 @@ class CustomDrawer extends StatelessWidget {
               text: 'اتصل بنا'),
           SizedBox(height: 10.sp,),
           containerOfDrawer(
-              iconData: FontAwesomeIcons.info,
+              iconData: Icons.info_outlined,
               fct: () {
                navigateTo(context: context, child: AboutUs());
               },
