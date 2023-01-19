@@ -11,13 +11,15 @@ class DioHelper {
       headers: {
         'Content-type': 'application/json',
         'Authorization':token,
+        'zoneId':zone_ids,
+
       },
     ));
   }
 
   static Future<Response> getData(
-      {required String url, required Map<String, dynamic> query,String? token,}) async {
-    dio.options.headers= {"Authorization":'Bearer $token',};
+      {required String url,  Map<String, dynamic>? query,String? token,var zone}) async {
+    dio.options.headers= {"Authorization":'Bearer $token',"zoneId":zone};
     return await dio.get(url, queryParameters: query);
   }
 

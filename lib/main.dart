@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wasely/cubit/all_meals_cubit/cubit.dart';
 import 'package:wasely/cubit/auth_cubit/auth_cubit.dart';
@@ -19,13 +22,23 @@ import 'package:wasely/services/dio_helper.dart';
 import 'package:wasely/utils/shared_pref.dart';
 
 import 'bloc_observe.dart';
+import 'component/const_color.dart';
 import 'cubit/custom_order_cubit/cubit.dart';
 import 'cubit/state.dart';
+import 'notification/fcm.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await Firebase.initializeApp();
+  FirebaseNotifications().setUpFirebase();
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   await CacheHelper.init();
+  await FirebaseMessaging.instance.getToken().then((value) {
+    CacheHelper.saveData(key: 'fcmToken', value: value);
+  });
+  fcmToken = CacheHelper.getData(key: 'fcmToken');
+  print('<<<<<<<<<<<<<$fcmToken>>>>>>>>>>>>>');
   Bloc.observer = MyBlocObserver();
  await DioHelper.init();
   Widget widget;
@@ -55,7 +68,7 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
           providers: [
             BlocProvider<GeneralCubit>(
-                create: (context) => GeneralCubit()..initialization()..getUserCurrentLocation()),
+                create: (context) => GeneralCubit()..initialization()),
             BlocProvider<AuthCubit>(
                 create: (context) => AuthCubit()),
             BlocProvider<ChatCubit>(
@@ -71,24 +84,28 @@ class MyApp extends StatelessWidget {
               create: (context) => DetailMealsCubit()..getCurrentLocation(),
             ),
             BlocProvider<HomeCubit>(
-                create: (context) => HomeCubit()..loadHomeData()),
+                create: (context) => HomeCubit()..loadHomeData()..getUserCurrentLocation()),
           ],
           child: BlocConsumer<GeneralCubit, GeneralState>(
               listener: (context, state) {},
               builder: (context, state) {
                 return Sizer(builder: (context, orientation, deviceType) {
-                  return MaterialApp(
-                    debugShowCheckedModeBanner: false,
+                  return OverlaySupport.global(
+                    child: MaterialApp(
+                      useInheritedMediaQuery: true,
+                      debugShowCheckedModeBanner: false,
 
-                    title: 'وصلي',
-                    theme: ThemeData(
-                     // fontFamily: GoogleFonts.elMessiri(),
-                      primarySwatch: Palette.kToDark,
-                      textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(
-                        Theme.of(context).textTheme,
+                      title: 'وصلي',
+                      theme: ThemeData(
+                       // fontFamily: GoogleFonts.elMessiri(),
+                        primarySwatch: Palette.kToDark,
+                        textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(
+                          Theme.of(context).textTheme,
+
+                        ),
                       ),
+                      home:startWidget,
                     ),
-                    home:startWidget,
                   );
                 });
               })),

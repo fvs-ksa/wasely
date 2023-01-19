@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wasely/cubit/custom_order_cubit/cubit.dart';
 import 'package:wasely/cubit/custom_order_cubit/state.dart';
+import '../utils/navigation_services.dart';
 import 'const_color.dart';
 
 Widget textFormField(
@@ -147,7 +148,18 @@ Widget mainButton(
     ),
   );
 }
+navigateForward(Widget page, {arguments}) {
+  NavigationService.navigate().navigateToScreen(page, arguments: arguments);
 
+}
+navigateForwardReplace(Widget page, {arguments}) {
+  NavigationService.navigate().replaceScreen(page, arguments: arguments);
+
+}
+navigateForwardPop(Widget page, {arguments}) {
+  NavigationService.navigate().goBack(page);
+
+}
 Widget containerOfDrawer(
     {required Function fct, required String text, IconData? iconData}) {
   return Padding(

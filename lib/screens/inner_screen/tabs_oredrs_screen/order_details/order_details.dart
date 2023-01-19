@@ -5,7 +5,6 @@ import 'package:sizer/sizer.dart';
 import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/order_details_cubit/cubit.dart';
 import 'package:wasely/cubit/order_details_cubit/state.dart';
-
 import '../../../../component/component.dart';
 
 class OrderDetails extends StatelessWidget {

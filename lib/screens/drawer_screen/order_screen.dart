@@ -4,6 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:wasely/component/const_color.dart';
 import 'package:wasely/component/item_bar.dart';
 import 'package:wasely/cubit/cubit.dart';
+import 'package:wasely/cubit/home_cubit/cubit.dart';
 import 'package:wasely/cubit/state.dart';
 import 'package:wasely/screens/inner_screen/tabs_oredrs_screen/current_order.dart';
 import 'package:wasely/screens/inner_screen/tabs_oredrs_screen/pervious_order.dart';

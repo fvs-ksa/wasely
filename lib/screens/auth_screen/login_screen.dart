@@ -38,10 +38,12 @@ class _LoginScreenState extends State<LoginScreen> {
         if(state is WaselyAuthLoginSuccessState||state is WaselyLoadingRegisterAuthState){
           CacheHelper.saveData(
               key: 'token', value: authCubit.loginModel.token).then((value){
+            // authCubit
             token=authCubit.loginModel.token;
             navigateAndReplacement(
                 context: context, child: OtpScreen());
             print('///////////////${authCubit.loginModel.token}');
+
 
             // print('token');
             // // .then((value) {

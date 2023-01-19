@@ -1,4 +1,5 @@
 var token;
+var zone_ids;
 // bool onBoarding=false;
 
 class BaseUrl{
@@ -6,7 +7,7 @@ class BaseUrl{
   static const signUp='/auth/sign-up';
   static const signIn='/auth/login';
   static const addAddress='/customer/address/add';
-  static const getBanners='banners/';
+  static const getBanners='/banners/getbanners';
 }
 
 

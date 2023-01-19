@@ -5,6 +5,7 @@ Color yellowColor=Color(0xfffefe3d);
 Color redColor=Color(0xffdc041b);
 
 var currentLocation='';
+var fcmToken;
 
 //0xffdc041b
 //0xffDC143C
