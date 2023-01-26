@@ -19,3 +19,12 @@ class WaselyAuthLoginErrorState extends AuthState{
   final String error;
   WaselyAuthLoginErrorState({required this.error});
 }
+class WaselyAuthSendOtpLoadingState extends AuthState{}
+class WaselyAuthSendOtpSuccessState extends AuthState{
+  // final LoginModel loginModel;
+  // WaselyAuthLoginSuccessState({required this.loginModel});
+}
+class WaselyAuthSendOtpErrorState extends AuthState{
+  final String error;
+  WaselyAuthSendOtpErrorState({required this.error});
+}

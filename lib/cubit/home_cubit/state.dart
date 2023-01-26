@@ -25,3 +25,10 @@ class GetBannersErrorState extends HomeState{
   final String error;
   GetBannersErrorState({required this.error});
 }
+class ArabicTextFieldAuthState extends HomeState{}
+// class WaselyGetProfileLoadingState extends HomeState{}
+// class WaselyGetProfileSuccessState extends HomeState{}
+// class WaselyGetProfileErrorState extends HomeState{
+//   String error;
+//   WaselyGetProfileErrorState({required this.error});
+// }

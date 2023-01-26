@@ -1,11 +1,11 @@
-class ProfileModel {
+class OtpModel {
   int? status;
   String? message;
   Account? account;
 
-  ProfileModel({this.status, this.message, this.account});
+  OtpModel({this.status, this.message, this.account});
 
-  ProfileModel.fromJson(Map<String, dynamic> json) {
+  OtpModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     account =
@@ -28,15 +28,15 @@ class Account {
   String? fname;
   String? lname;
   String? phone;
-  Null? address;
+//  Null? address;
   String? email;
-  Null? image;
-  Null? fcm;
+  // Null? image;
+  // Null? fcm;
   String? createdAt;
   String? updatedAt;
   int? isActive;
   int? isVerified;
-  Null? gender;
+  String? gender;
   int? totalRate;
 
   Account(
@@ -44,10 +44,10 @@ class Account {
         this.fname,
         this.lname,
         this.phone,
-        this.address,
-        this.email,
-        this.image,
-        this.fcm,
+        // this.address,
+        // this.email,
+        // this.image,
+        // this.fcm,
         this.createdAt,
         this.updatedAt,
         this.isActive,
@@ -60,10 +60,10 @@ class Account {
     fname = json['fname'];
     lname = json['lname'];
     phone = json['phone'];
-    address = json['address'];
+   // address = json['address'];
     email = json['email'];
-    image = json['image'];
-    fcm = json['fcm'];
+  //  image = json['image'];
+   // fcm = json['fcm'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     isActive = json['is_active'];
@@ -78,10 +78,10 @@ class Account {
     data['fname'] = this.fname;
     data['lname'] = this.lname;
     data['phone'] = this.phone;
-    data['address'] = this.address;
+  //  data['address'] = this.address;
     data['email'] = this.email;
-    data['image'] = this.image;
-    data['fcm'] = this.fcm;
+  //  data['image'] = this.image;
+  //  data['fcm'] = this.fcm;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     data['is_active'] = this.isActive;

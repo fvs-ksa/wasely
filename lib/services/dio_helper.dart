@@ -8,18 +8,24 @@ class DioHelper {
     dio = Dio(BaseOptions(
       baseUrl: BaseUrl.baseUrl,
       receiveDataWhenStatusError: true,
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization':token,
-        'zoneId':zone_ids,
-
-      },
+      // headers: {
+      //   'Authorization':"$token",
+      //   'Content-type': 'application/json',
+      //
+      //   //'zoneId':zone_ids,
+      //
+      // },
     ));
   }
 
   static Future<Response> getData(
-      {required String url,  Map<String, dynamic>? query,String? token,var zone}) async {
-    dio.options.headers= {"Authorization":'Bearer $token',"zoneId":zone};
+      {required String url,  Map<String, dynamic>? query,String? token}) async {
+
+    dio.options.headers= {
+      "Authorization":'Bearer $token'??"",
+      'Content-Type': 'application/json'
+     // "zoneId":zone
+    };
     return await dio.get(url, queryParameters: query);
   }
 

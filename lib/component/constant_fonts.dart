@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
  ) ;
 var whiteBodyStyle=GoogleFonts.elMessiri(
     color: Colors.white,
-    fontSize: 15,
+    fontSize: 15.sp,
 
     fontWeight: FontWeight.bold
 ) ;

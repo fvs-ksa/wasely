@@ -1,7 +1,9 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -13,6 +15,7 @@ import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/cubit/detailsmeal_cubit/cubit.dart';
 import 'package:wasely/cubit/home_cubit/cubit.dart';
 import 'package:wasely/cubit/order_details_cubit/cubit.dart';
+import 'package:wasely/cubit/profile_cubit/cubit.dart';
 import 'package:wasely/pallette.dart';
 import 'package:wasely/screens/auth_screen/login_screen.dart';
 import 'package:wasely/screens/main_screen/home_screen.dart';
@@ -20,7 +23,6 @@ import 'package:wasely/screens/onBorading_screen.dart';
 import 'package:wasely/services/base_url.dart';
 import 'package:wasely/services/dio_helper.dart';
 import 'package:wasely/utils/shared_pref.dart';
-
 import 'bloc_observe.dart';
 import 'component/const_color.dart';
 import 'cubit/custom_order_cubit/cubit.dart';
@@ -44,16 +46,20 @@ void main() async {
   Widget widget;
   if(CacheHelper.getData(key: 'onBoarding')==null){
     widget=OnBoradingScreen();
-  }else if(CacheHelper.getData(key: 'onBoarding')==true &&CacheHelper.getData(key: 'token')==null ){
+  }else if(CacheHelper.getData(key: 'onBoarding')==true && CacheHelper.getData(key: 'access_token')==null ){
     bool onBoarding=CacheHelper.getData(key: 'onBoarding');
     print(onBoarding);
     widget=LoginScreen();
   }else{
-    token=CacheHelper.getData(key: 'token');
-    print(token.toString());
+    token=CacheHelper.getData(key: 'access_token');
+    print("//////////////////////////// ${token.toString()} ////////////////////////////////");
     widget=HomeScreen();
   }
-   runApp( MyApp(startWidget: widget,));
+   runApp(DevicePreview(
+       enabled: false,
+       builder: (context){
+     return  MyApp(startWidget: widget,);
+   }));
 }
 
 class MyApp extends StatelessWidget {
@@ -83,6 +89,9 @@ class MyApp extends StatelessWidget {
             BlocProvider<DetailMealsCubit>(
               create: (context) => DetailMealsCubit()..getCurrentLocation(),
             ),
+            BlocProvider<ProfileCubit>(
+              create: (context) => ProfileCubit()..getProfileData(),
+            ),
             BlocProvider<HomeCubit>(
                 create: (context) => HomeCubit()..loadHomeData()..getUserCurrentLocation()),
           ],
@@ -92,17 +101,28 @@ class MyApp extends StatelessWidget {
                 return Sizer(builder: (context, orientation, deviceType) {
                   return OverlaySupport.global(
                     child: MaterialApp(
+
+                      builder: DevicePreview.appBuilder,
+                      localizationsDelegates: const [
+                        GlobalMaterialLocalizations.delegate,
+                        GlobalCupertinoLocalizations.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                      ],
+                      supportedLocales: const [
+                        Locale('ar'),
+                         const Locale('en'),
+                      ],
+                      locale: const Locale('ar'),
                       useInheritedMediaQuery: true,
                       debugShowCheckedModeBanner: false,
 
                       title: 'وصلي',
                       theme: ThemeData(
+                       // useMaterial3:true,
+                      //  colorSchemeSeed: Colors.green,
                        // fontFamily: GoogleFonts.elMessiri(),
                         primarySwatch: Palette.kToDark,
-                        textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(
-                          Theme.of(context).textTheme,
-
-                        ),
+                        textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(Theme.of(context).textTheme,),
                       ),
                       home:startWidget,
                     ),

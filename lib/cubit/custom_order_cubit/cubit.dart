@@ -63,7 +63,14 @@ class CustomOrderCubit extends Cubit<CustomOrderState>{
 
   }
 
-
+  void arabicTextField({required TextEditingController controller}){
+    if(controller.selection == TextSelection.fromPosition(TextPosition(offset: controller.text.length -1))){
+      // setState(() {
+      controller.selection = TextSelection.fromPosition(TextPosition(offset: controller.text.length));
+      // });
+      emit(ArabicTextFieldAuthState());
+    }
+  }
 
   late Position position;
   var first;

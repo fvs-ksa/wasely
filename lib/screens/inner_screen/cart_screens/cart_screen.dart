@@ -4,7 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:wasely/component/app_bar_cart.dart';
 import 'package:wasely/component/component.dart';
 import 'package:wasely/component/const_color.dart';
-import 'package:wasely/screens/inner_screen/cart_screens/address_screen.dart';
+import 'package:wasely/screens/inner_screen/cart_screens/sent_order_screen.dart';
 
 import '../../../cubit/detailsmeal_cubit/cubit.dart';
 import '../../../cubit/detailsmeal_cubit/state.dart';
@@ -123,7 +123,7 @@ class CartScreen extends StatelessWidget {
                                   onTap: () {
                                     navigateTo(
                                         context: context,
-                                        child: AddressScreen(
+                                        child: SentOrderScreen(
                                           mealCount: amount,
                                           mealName: 'وجبه كنتاكي الكبيره',
                                           mealPrice: price,

@@ -12,6 +12,7 @@ class ItemBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size=MediaQuery.of(context).size;
     backgroundColor = indexItem == GeneralCubit.get(context).indexTab
         ? redColor
         : Colors.white;
@@ -19,6 +20,7 @@ class ItemBar extends StatelessWidget {
         ? Colors.white
         : Colors.black;
     return Container(
+
       padding: EdgeInsets.only(bottom: 5.sp),
       margin: EdgeInsets.only(left: 2, right: 2),
       decoration: BoxDecoration(
@@ -30,7 +32,7 @@ class ItemBar extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         title,
-        style: TextStyle(fontWeight: FontWeight.bold, color: textColor, fontSize: 16.sp),
+        style: TextStyle(fontWeight: FontWeight.bold, color: textColor, fontSize:size.height>1000?size.height>=1880?12.sp:9.sp: 16.sp),
       ),
     );
   }

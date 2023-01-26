@@ -16,15 +16,22 @@ Widget textFormField(
     Function? fct,
     Function? onchange,
     String? text,
+      int? limtedNumber,
+      Function? onTap,
     TextInputType? type,
     bool isenable = true,
+      int? maxLines,
     IconData? child}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
     child: TextFormField(
+      maxLines: maxLines,
+      onTap: (){
+        onTap!();
+      },
       maxLength: number,
       inputFormatters: [
-        LengthLimitingTextInputFormatter(10),
+        LengthLimitingTextInputFormatter(limtedNumber),
       ],
       enabled: isenable,
       onChanged: (v) {
@@ -161,7 +168,8 @@ navigateForwardPop(Widget page, {arguments}) {
 
 }
 Widget containerOfDrawer(
-    {required Function fct, required String text, IconData? iconData}) {
+    {required Function fct, required String text, IconData? iconData,required BuildContext context}) {
+  Size size=MediaQuery.of(context).size;
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 18.0.sp),
     child: Container(
@@ -175,11 +183,12 @@ Widget containerOfDrawer(
             FaIcon(
               iconData,
               color: redColor,
+              size:size.height>1000?12.sp:10.sp ,
             ),
             SizedBox(
               width: 10.sp,
             ),
-            Text(text),
+            Text(text,style: TextStyle(fontSize: size.height>1000?9.sp: 8.sp),),
           ],
         ),
       ),
@@ -199,6 +208,7 @@ Widget mainContainer(
     double? distance,
     Color? color,
     String? title}) {
+  Size size=MediaQuery.of(context).size;
   return Padding(
     padding: EdgeInsets.all(10.0.sp),
     child: InkWell(
@@ -247,7 +257,7 @@ Widget mainContainer(
                         SizedBox(
                           width: 13.w,
                         ),
-                        Text('${distance.toString()} kms')
+                        Text('${distance.toString()} kms',style: TextStyle(fontSize:size.height>1000?9.sp: 8.sp ,),)
                       ],
                     ),
                     SizedBox(
@@ -257,7 +267,7 @@ Widget mainContainer(
                       status!,
                       style: TextStyle(
                           color: color,
-                          fontSize: 15,
+                          fontSize:size.height>1000?9.sp: 8.sp ,
                           fontWeight: FontWeight.w700),
                     )
                   ],
@@ -436,7 +446,7 @@ navigateAndReplacement({required BuildContext context, required Widget child}) {
 
 Widget notifyContainer() {
   return Container(
-      height: 10.8.h,
+      height: 11.9.h,
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: BorderRadius.circular(15),

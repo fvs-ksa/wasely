@@ -45,4 +45,5 @@ class GeneralCubit extends Cubit<GeneralState> {
     isLastFirstBoarding = true;
     emit(ChangeFirstLastState());
   }
+
 }

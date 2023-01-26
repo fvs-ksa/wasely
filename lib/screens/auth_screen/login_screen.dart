@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +38,12 @@ class _LoginScreenState extends State<LoginScreen> {
       listener: (context, state) {
         if(state is WaselyAuthLoginSuccessState||state is WaselyLoadingRegisterAuthState){
           CacheHelper.saveData(
-              key: 'token', value: authCubit.loginModel.token).then((value){
+              key: 'access_token', value: authCubit.loginModel.accessToken).then((value){
             // authCubit
-            token=authCubit.loginModel.token;
+            token=authCubit.loginModel.accessToken;
             navigateAndReplacement(
-                context: context, child: OtpScreen());
-            print('///////////////${authCubit.loginModel.token}');
+                context: context, child: OtpScreen(phone: phoneController.text,));
+            print('///////////////${authCubit.loginModel.accessToken} ////////////////////////////852');
 
 
             // print('token');
@@ -92,20 +93,32 @@ class _LoginScreenState extends State<LoginScreen> {
                                   text: 'الاسم',
                                 )
                               : Container(),
-                          textFormField(
-                              number: 9,
-                              type: TextInputType.phone,
-                              controller: phoneController,
+
+                          authCubit.isRegister
+                              ? textFormField(
+                              number: 10,
+                              type: TextInputType.emailAddress,
+                              controller: lastNameController,
                               fct: (var value) {
-                                if (value.isEmpty || value.length < 9) {
+                                if (value.isEmpty) {
                                   return 'رقم الجوال يجب الا يقل عن 10 ارثام';
                                 }
                               },
-                              text: '5xxxxxxxx',
+                              text: 'الاسم الاخير',
+                              child: Icons.person)
+                              : Container(),
+                          textFormField(
+                              number: 10,
+                              type: TextInputType.phone,
+                              controller: phoneController,
+                              fct: (var value) {
+                                if (value.isEmpty || value.length < 10) {
+                                  return 'رقم الجوال يجب الا يقل عن 10 ارثام';
+                                }
+                              },
+                              text: '05xxxxxxxx',
                               child: Icons.call),
-                          SizedBox(
-                            height: 1.h,
-                          ),
+
                           authCubit.isRegister
                               ? textFormField(
                                   number: 10,
@@ -129,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                               },
                               text: '********',
-                              child: Icons.call),
+                              child: Icons.lock),
                           mainButton(
                               width: 50.w,
                               text: authCubit.isRegister
@@ -139,16 +152,36 @@ class _LoginScreenState extends State<LoginScreen> {
                               context: context,
                               fct: ()  {
                                 if (key.currentState!.validate()) {
-                                  authCubit.isRegister
-                                      ? authCubit.userRegister(
+                                  //navigateTo(context: context, child: OtpScreen());
+                                  if(authCubit.isRegister==true){
+
+                                      authCubit.userRegister(
                                           name: nameController.text,
                                           email: emailController.text,
+                                          lastName: lastNameController.text,
                                           phone: phoneController.text,
-                                          password: passwordController.text)
-                                      :
-                                  authCubit.userLogin(
+                                          password: passwordController.text);
+                                      navigateAndReplacement(context: context, child: OtpScreen(phone: phoneController.text,));
+
+
+                                  }else{
+                                      authCubit.userLogin(
                                           phoneController.text,
                                           passwordController.text);
+                                      navigateAndReplacement(context: context, child: OtpScreen(phone: phoneController.text,));
+
+
+                                  }
+                                  // authCubit.isRegister
+                                  //     ? authCubit.userRegister(
+                                  //         name: nameController.text,
+                                  //         email: emailController.text,
+                                  //         lastName: lastNameController.text,
+                                  //         phone: phoneController.text,
+                                  //         password: passwordController.text);
+                                  //
+                                  //     :
+
                                   // if (token == null) {
                                   //   print('object');
                                   // } else {

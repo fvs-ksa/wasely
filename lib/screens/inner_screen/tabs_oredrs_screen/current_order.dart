@@ -17,7 +17,7 @@ class CurrentOrder extends StatelessWidget {
           Padding(
             padding:  EdgeInsets.only(top: 10.0.sp,left: 14,right: 14),
             child: Container(
-              height: 15.h,
+              height: 18.h,
               decoration: BoxDecoration(
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(20),

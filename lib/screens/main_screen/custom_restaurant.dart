@@ -32,7 +32,7 @@ class _CustomRestaurantState extends State<CustomRestaurant>
 
   @override
   void initState() {
-    controller = TabController(length: 4, initialIndex: 0, vsync: this);
+    controller = TabController(length: 4, initialIndex:GeneralCubit.get(context).indexTab, vsync: this);
     controller.addListener(_setTabActive);
     super.initState();
   }
@@ -42,54 +42,51 @@ class _CustomRestaurantState extends State<CustomRestaurant>
     return BlocConsumer<GeneralCubit,GeneralState>(
       listener: (context,state){},
       builder: (context,state){
-        return Directionality(
-          textDirection: TextDirection.rtl,
-          child: Scaffold(
-            appBar: AppBar(
-              bottom: PreferredSize(child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 4.0.w),
-                child: Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: Colors.white)),
-                    child: TabBar(
-                      physics: BouncingScrollPhysics(),
-                        controller: controller,
-                        labelPadding: EdgeInsets.all(8),
-                        labelColor: redColor,
-                        indicatorWeight: 0.1,
-                        unselectedLabelColor: Colors.black,
-                        isScrollable: true,
-                        onTap: (int i){
-
-                        },
-                        tabs: [
-                          Tab(child: ItemBar(title: 'الكل',indexItem: 0),),
-                          Tab(child: ItemBar(title: 'الوجبات',indexItem: 1),),
-                          Tab(child: ItemBar(title: 'السندوتشات',indexItem: 2),),
-                          Tab(child: ItemBar(title: 'العروض',indexItem: 3),),
-                        ]),
-                  ),
+        return Scaffold(
+          appBar: AppBar(
+            bottom: PreferredSize(child: Padding(
+              padding:  EdgeInsets.symmetric(horizontal: 4.0.w),
+              child: Card(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              ), preferredSize: Size.fromHeight(MediaQuery.of(context).size.height*.1)),
-              title: Text(widget.nameOfRestaurant),
-            ),
-            body: Align(
-              alignment: Alignment.topCenter,
-              child: TabBarView(controller: controller,children: [
-                AllProductOfRestaurant(),
-                MealsRestaurant(),
-                SandwichRestaurant(),
-                OffersRestaurant(),
-              ]),
-            ),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.white)),
+                  child: TabBar(
+                    physics: BouncingScrollPhysics(),
+                      controller: controller,
+                      labelPadding: EdgeInsets.all(8),
+                      labelColor: redColor,
+                      indicatorWeight: 0.1,
+                      unselectedLabelColor: Colors.black,
+                      isScrollable: true,
+                      onTap: (int i){
+
+                      },
+                      tabs: [
+                        Tab(child: ItemBar(title: 'الكل',indexItem: 0),),
+                        Tab(child: ItemBar(title: 'الوجبات',indexItem: 1),),
+                        Tab(child: ItemBar(title: 'السندوتشات',indexItem: 2),),
+                        Tab(child: ItemBar(title: 'العروض',indexItem: 3),),
+                      ]),
+                ),
+              ),
+            ), preferredSize: Size.fromHeight(MediaQuery.of(context).size.height*.1)),
+            title: Text(widget.nameOfRestaurant),
+          ),
+          body: Align(
+            alignment: Alignment.topCenter,
+            child: TabBarView(controller: controller,children: [
+              AllProductOfRestaurant(),
+              MealsRestaurant(),
+              SandwichRestaurant(),
+              OffersRestaurant(),
+            ]),
           ),
         );
       },

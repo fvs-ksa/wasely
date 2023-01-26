@@ -7,19 +7,16 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('الاشعارات'),
-        ),
-        body: Padding(
-          padding:  EdgeInsets.only(top: 1.0.h,right: 4.w,left: 4.w,bottom: 2.h),
-          child: Column(
-            children: [
-              notifyContainer(),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('الاشعارات'),
+      ),
+      body: Padding(
+        padding:  EdgeInsets.only(top: 1.0.h,right: 4.w,left: 4.w,bottom: 2.h),
+        child: Column(
+          children: [
+            notifyContainer(),
+          ],
         ),
       ),
     );

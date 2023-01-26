@@ -7,6 +7,8 @@ import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wasely/component/const_color.dart';
+import 'package:wasely/cubit/auth_cubit/auth_cubit.dart';
+import 'package:wasely/cubit/auth_cubit/auth_state.dart';
 import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/screens/main_screen/home_screen.dart';
 
@@ -14,6 +16,8 @@ import '../../component/component.dart';
 import '../../cubit/state.dart';
 
 class OtpScreen extends StatefulWidget {
+  String phone;
+  OtpScreen({required this.phone});
   @override
   State<OtpScreen> createState() => _OtpScreenState();
 }
@@ -26,8 +30,8 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     final key = GlobalKey<FormState>();
-    var cubit = GeneralCubit.get(context);
-    return BlocConsumer<GeneralCubit, GeneralState>(
+    var cubit = AuthCubit.get(context);
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
@@ -81,6 +85,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             context: context,
                             fct: () {
                               if (key.currentState!.validate()) {
+
                                 navigateAndReplacement(
                                     context: context, child: HomeScreen());
                               }
