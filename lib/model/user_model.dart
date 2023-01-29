@@ -30,7 +30,7 @@ class Account {
   String? phone;
   Null? address;
   String? email;
-  Null? image;
+  String? image;
   Null? fcm;
   String? createdAt;
   String? updatedAt;

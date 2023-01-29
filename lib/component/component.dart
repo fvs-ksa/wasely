@@ -134,6 +134,9 @@ Widget mainButton(
     FontWeight? fontWeight,
     required String text,
     required Color color,
+      Color? buttonColor,
+      Color? borderColor,
+      Color? textColor,
     required BuildContext context,
     required Function fct}) {
   return InkWell(
@@ -141,17 +144,20 @@ Widget mainButton(
       fct();
     },
     child: Container(
+
       height: 30.sp,
       width: width,
       child: Center(
         child: Text(
           text,
           style: TextStyle(
-              color: Colors.white, fontWeight: fontWeight, fontSize: 18),
+              color: textColor, fontWeight: fontWeight, fontSize: 18),
         ),
       ),
       decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(15)),
+          BoxDecoration(
+              border: Border.all(color:borderColor??Colors.transparent ),
+              color: buttonColor, borderRadius: BorderRadius.circular(15)),
     ),
   );
 }
@@ -183,12 +189,12 @@ Widget containerOfDrawer(
             FaIcon(
               iconData,
               color: redColor,
-              size:size.height>1000?12.sp:10.sp ,
+              size:size.height>1000?12.sp:12.sp ,
             ),
             SizedBox(
               width: 10.sp,
             ),
-            Text(text,style: TextStyle(fontSize: size.height>1000?9.sp: 8.sp),),
+            Text(text,style: TextStyle(fontSize: size.height>1000?9.sp: 12.sp),),
           ],
         ),
       ),

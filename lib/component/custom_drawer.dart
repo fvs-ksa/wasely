@@ -30,9 +30,9 @@ class CustomDrawer extends StatelessWidget {
           children: [
             UserAccountsDrawerHeader(
                 accountName: Text(profileCubit.isInitialize?profileCubit.profileModel.account!.fname!:"",
-                  style: TextStyle(fontSize: size.height>1000?9.sp: 8.sp),),
+                  style: TextStyle(fontSize: size.height>1000?9.sp: 12.sp),),
                 accountEmail: Text( profileCubit.isInitialize?profileCubit.profileModel.account!.phone!:"",
-                  style: TextStyle(fontSize: size.height>1000?9.sp: 8.sp),)),
+                  style: TextStyle(fontSize: size.height>1000?9.sp: 12.sp),)),
             containerOfDrawer(
                 context: context,
                 fct: () {

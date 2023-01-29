@@ -110,7 +110,7 @@ class MyApp extends StatelessWidget {
                       ],
                       supportedLocales: const [
                         Locale('ar'),
-                         const Locale('en'),
+                        const Locale('en'),
                       ],
                       locale: const Locale('ar'),
                       useInheritedMediaQuery: true,
@@ -119,7 +119,7 @@ class MyApp extends StatelessWidget {
                       title: 'وصلي',
                       theme: ThemeData(
                        // useMaterial3:true,
-                      //  colorSchemeSeed: Colors.green,
+                       //  colorSchemeSeed: Colors.green,
                        // fontFamily: GoogleFonts.elMessiri(),
                         primarySwatch: Palette.kToDark,
                         textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(Theme.of(context).textTheme,),

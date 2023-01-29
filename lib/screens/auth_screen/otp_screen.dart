@@ -80,6 +80,8 @@ class _OtpScreenState extends State<OtpScreen> {
                         ),
                         mainButton(
                             width: 50.w,
+                            textColor: whiteColor,
+                            buttonColor: amberColor,
                             text: ' تحقق',
                             color: amberColor,
                             context: context,

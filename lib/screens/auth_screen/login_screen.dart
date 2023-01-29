@@ -144,6 +144,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               text: '********',
                               child: Icons.lock),
                           mainButton(
+                            textColor: Colors.white,
+                              buttonColor: amberColor,
                               width: 50.w,
                               text: authCubit.isRegister
                                   ? 'انشاء حساب'

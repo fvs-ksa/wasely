@@ -5,11 +5,8 @@ import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/screens/inner_screen/tabs_restaurant/offers_restaurant.dart';
 import 'package:wasely/screens/inner_screen/tabs_restaurant/sandwich_restaurant.dart';
-
 import '../../component/item_bar.dart';
 import '../../cubit/state.dart';
-import '../inner_screen/tabs_oredrs_screen/current_order.dart';
-import '../inner_screen/tabs_oredrs_screen/pervious_order.dart';
 import '../inner_screen/tabs_restaurant/all_product_restaurant.dart';
 import '../inner_screen/tabs_restaurant/meals_restaurat.dart';
 
@@ -58,7 +55,7 @@ class _CustomRestaurantState extends State<CustomRestaurant>
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.white)),
                   child: TabBar(
-                    physics: BouncingScrollPhysics(),
+                      physics: BouncingScrollPhysics(),
                       controller: controller,
                       labelPadding: EdgeInsets.all(8),
                       labelColor: redColor,
