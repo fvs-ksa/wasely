@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
@@ -9,11 +7,8 @@ import 'package:sizer/sizer.dart';
 import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/auth_cubit/auth_cubit.dart';
 import 'package:wasely/cubit/auth_cubit/auth_state.dart';
-import 'package:wasely/cubit/cubit.dart';
 import 'package:wasely/screens/main_screen/home_screen.dart';
-
 import '../../component/component.dart';
-import '../../cubit/state.dart';
 
 class OtpScreen extends StatefulWidget {
   String phone;
@@ -64,7 +59,6 @@ class _OtpScreenState extends State<OtpScreen> {
                               OtpFieldStyle(backgroundColor: Colors.white),
                           fieldWidth: 50,
                           //  spaceBetween: 5.sp,
-
                           keyboardType: TextInputType.phone,
                           style: TextStyle(fontSize: 15.sp),
                           onCompleted: (v) {

@@ -96,7 +96,7 @@ class HomeCubit extends Cubit<HomeState>{
 
     //  CacheHelper.putData(key: 'address', value: currentLocation);
     emit(GetCurrentAddressSuccessState());
-   // addAddress(address: address!, lat: pos.latitude, lng: pos.longitude);
+    addAddress(address: address!, lat: pos.latitude, lng: pos.longitude);
 
 
   }
@@ -110,34 +110,33 @@ class HomeCubit extends Cubit<HomeState>{
 
   }
 
-//   bool isAddAddress = false;
-//  late UpdateAddressModel updateAddressModel;
-//   void addAddress(
-//       {required String address, required double lat, required double lng}) {
-//     emit(AddAddressLoadingState());
-//     DioHelper.postData(
-//       url: BaseUrl.updateAddress,
-//       data: {
-//         'address': address,
-//         'lat': lat,
-//         // "token":'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9..ICxwqgPzAGyG0ZsaIqdhMdHrXNQ-BtB2Kf7JZ9C5UHaMjnKlnQ9QnJWCmKuGetaqwbVtBHd14MnWtSf-wp9CkgebDFoQdxElM',
-//         'lon': lng,
-//       },
-//       token: CacheHelper.getData(key: 'access_token'),
-//     ).then((value) {
-//       // print(value.data);
-//       // print(value.data['zone_ids']);
-//       // zone_ids = value.data['zone_ids'];
-//       isAddAddress = true;
-//      // print(zone_ids);
-// print(updateAddressModel.message);
-//       emit(AddAddressSuccessState());
-//      // getBanners(zoneId: zone_ids);
-//     }).catchError((error) {
-//       print(error.toString());
-//       emit(AddAddressErrorState(error: error.toString()));
-//     });
-//   }
+  bool isAddAddress = false;
+//late UpdateAddressModel updateAddressModel;
+  void addAddress(
+      {required String address, required double lat, required double lng}) {
+    emit(AddAddressLoadingState());
+    DioHelper.postData(
+      url: BaseUrl.updateAddress,
+      data: {
+        'address': address,
+        'lat': lat,
+        'lon': lng,
+      },
+      token: CacheHelper.getData(key: 'access_token'),
+    ).then((value) {
+      // print(value.data);
+      // print(value.data['zone_ids']);
+      // zone_ids = value.data['zone_ids'];
+      isAddAddress = true;
+     // print(zone_ids);
+     // print(updateAddressModel.message);
+      emit(AddAddressSuccessState());
+     // getBanners(zoneId: zone_ids);
+    }).catchError((error) {
+      print(error.toString());
+      emit(AddAddressErrorState(error: error.toString()));
+    });
+  }
 //   late GetBanners getBannersModel;
 //   bool isBannersGet=false;
 //   void getBanners({required var zoneId}) {
