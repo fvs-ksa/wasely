@@ -157,11 +157,7 @@ class HomeCubit extends Cubit<HomeState>{
 //       emit(GetBannersErrorState(error: error.toString()));
 //     });
 //   }
-  // void postAddress(){
-  //   DioHelper.postData(url: BaseUrl.addAddress, data: {
-  //
-  //   })
-  // }
+
   void arabicTextField({required TextEditingController controller}){
     if(controller.selection == TextSelection.fromPosition(TextPosition(offset: controller.text.length -1))){
       // setState(() {

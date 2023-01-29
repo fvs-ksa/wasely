@@ -15,11 +15,11 @@ class CustomOrderScreen extends StatelessWidget {
    CustomOrderScreen({Key? key}) : super(key: key);
   TextEditingController orderDetailsController = TextEditingController();
   TextEditingController locationController = TextEditingController();
-
+   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
-    final key = GlobalKey<FormState>();
+  //  final key = GlobalKey<FormState>();
     var customOrderCubit = CustomOrderCubit.get(context);
    // var generalCubit = GeneralCubit.get(context);
     return BlocConsumer<CustomOrderCubit, CustomOrderState>(
@@ -31,16 +31,13 @@ class CustomOrderScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return BlocConsumer<GeneralCubit, GeneralState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            return GestureDetector(
-              onTap: ()=>FocusManager.instance.primaryFocus?.unfocus(),
+        return  GestureDetector(
+            onTap: ()=>FocusManager.instance.primaryFocus?.unfocus(),
               child: Scaffold(
                 appBar: AppBar(title: Text('جب لي'),),
                 body: SingleChildScrollView(
                   child: Form(
-                    key: key,
+                    key: _formKey,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: 8.6.w, vertical: 2.h),
@@ -276,13 +273,15 @@ class CustomOrderScreen extends StatelessWidget {
                             padding: EdgeInsets.only(top:size.height>800?size.height>1100?10.h:8.h: 2.0.h),
                             child: mainButton(
                               width: 120.sp,
+                              textColor: whiteColor,
+                              buttonColor: redColor,
                               text: 'رفع الطلب',
                               color: redColor,
                               context: context,
                               fct: () {
                                 if (currentLocation.isEmpty) {
                                   Fluttertoast.showToast(msg: 'من فضلك اختار الموقع',backgroundColor: amberColor,toastLength: Toast.LENGTH_LONG,fontSize: 14.sp);
-                                }else if (key.currentState!.validate()) {
+                                }else if (_formKey.currentState!.validate()) {
                                   navigateTo(context: context, child: DriverOfferScreen());
                                 }
 
@@ -298,8 +297,7 @@ class CustomOrderScreen extends StatelessWidget {
             );
           },
         );
-      },
-    );
+
   }
 }
 

@@ -29,6 +29,9 @@ class ContactUs extends StatelessWidget {
               ),
             ),
             mainButton(
+              textColor: whiteColor,
+              buttonColor: redColor,
+
               width: 120.sp,
               text: 'ارسال مشكلتك',
               color: redColor,

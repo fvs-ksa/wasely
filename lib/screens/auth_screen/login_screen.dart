@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/auth_cubit/auth_cubit.dart';
 import 'package:wasely/cubit/auth_cubit/auth_state.dart';
-
-import 'package:wasely/cubit/cubit.dart';
-import 'package:wasely/model/login_model.dart';
 import 'package:wasely/screens/auth_screen/otp_screen.dart';
 import 'package:wasely/services/base_url.dart';
 import 'package:wasely/utils/shared_pref.dart';
-
 import '../../component/component.dart';
-import '../../cubit/state.dart';
 
-class LoginScreen extends StatefulWidget {
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
+class LoginScreen extends StatelessWidget {
+  LoginScreen({Key? key}) : super(key: key);
 
-class _LoginScreenState extends State<LoginScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -36,21 +26,25 @@ class _LoginScreenState extends State<LoginScreen> {
     var authCubit = AuthCubit.get(context);
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if(state is WaselyAuthLoginSuccessState||state is WaselyLoadingRegisterAuthState){
+        if (state is WaselyAuthLoginSuccessState ||
+            state is WaselyLoadingRegisterAuthState) {
           CacheHelper.saveData(
-              key: 'access_token', value: authCubit.loginModel.accessToken).then((value){
+                  key: 'access_token', value: authCubit.loginModel.accessToken)
+              .then((value) {
             // authCubit
-            token=authCubit.loginModel.accessToken;
+            token = authCubit.loginModel.accessToken;
             navigateAndReplacement(
-                context: context, child: OtpScreen(phone: phoneController.text,));
-            print('///////////////${authCubit.loginModel.accessToken} ////////////////////////////852');
-
+                context: context,
+                child: OtpScreen(
+                  phone: phoneController.text,
+                ));
+            print(
+                '///////////////${authCubit.loginModel.accessToken} ////////////////////////////852');
 
             // print('token');
             // // .then((value) {
             // // if(value){
             // // // print('TOKEN://////////////////// $token');
-
           });
           //  }
 
@@ -93,19 +87,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                   text: 'الاسم',
                                 )
                               : Container(),
-
                           authCubit.isRegister
                               ? textFormField(
-                              number: 10,
-                              type: TextInputType.emailAddress,
-                              controller: lastNameController,
-                              fct: (var value) {
-                                if (value.isEmpty) {
-                                  return 'رقم الجوال يجب الا يقل عن 10 ارثام';
-                                }
-                              },
-                              text: 'الاسم الاخير',
-                              child: Icons.person)
+                                  number: 10,
+                                  type: TextInputType.emailAddress,
+                                  controller: lastNameController,
+                                  fct: (var value) {
+                                    if (value.isEmpty) {
+                                      return 'رقم الجوال يجب الا يقل عن 10 ارثام';
+                                    }
+                                  },
+                                  text: 'الاسم الاخير',
+                                  child: Icons.person)
                               : Container(),
                           textFormField(
                               number: 10,
@@ -118,7 +111,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                               text: '05xxxxxxxx',
                               child: Icons.call),
-
                           authCubit.isRegister
                               ? textFormField(
                                   number: 10,
@@ -144,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               text: '********',
                               child: Icons.lock),
                           mainButton(
-                            textColor: Colors.white,
+                              textColor: Colors.white,
                               buttonColor: amberColor,
                               width: 50.w,
                               text: authCubit.isRegister
@@ -152,27 +144,29 @@ class _LoginScreenState extends State<LoginScreen> {
                                   : 'ارسال كود تحقق',
                               color: amberColor,
                               context: context,
-                              fct: ()  {
+                              fct: () {
                                 if (key.currentState!.validate()) {
                                   //navigateTo(context: context, child: OtpScreen());
-                                  if(authCubit.isRegister==true){
-
-                                      authCubit.userRegister(
-                                          name: nameController.text,
-                                          email: emailController.text,
-                                          lastName: lastNameController.text,
+                                  if (authCubit.isRegister == true) {
+                                    authCubit.userRegister(
+                                        name: nameController.text,
+                                        email: emailController.text,
+                                        lastName: lastNameController.text,
+                                        phone: phoneController.text,
+                                        password: passwordController.text);
+                                    navigateAndReplacement(
+                                        context: context,
+                                        child: OtpScreen(
                                           phone: phoneController.text,
-                                          password: passwordController.text);
-                                      navigateAndReplacement(context: context, child: OtpScreen(phone: phoneController.text,));
-
-
-                                  }else{
-                                      authCubit.userLogin(
-                                          phoneController.text,
-                                          passwordController.text);
-                                      navigateAndReplacement(context: context, child: OtpScreen(phone: phoneController.text,));
-
-
+                                        ));
+                                  } else {
+                                    authCubit.userLogin(phoneController.text,
+                                        passwordController.text);
+                                    navigateAndReplacement(
+                                        context: context,
+                                        child: OtpScreen(
+                                          phone: phoneController.text,
+                                        ));
                                   }
                                   // authCubit.isRegister
                                   //     ? authCubit.userRegister(
@@ -191,12 +185,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   //   print('object');
                                   // }else{
 
-
-
-                                    // }
-                                    //
-                                    //   });
-                                 // }
+                                  // }
+                                  //
+                                  //   });
+                                  // }
                                 }
                               }),
                           SizedBox(

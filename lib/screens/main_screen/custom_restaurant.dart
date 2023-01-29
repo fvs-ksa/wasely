@@ -19,8 +19,7 @@ class CustomRestaurant extends StatefulWidget {
   State<CustomRestaurant> createState() => _CustomRestaurantState();
 }
 
-class _CustomRestaurantState extends State<CustomRestaurant>
-    with TickerProviderStateMixin {
+class _CustomRestaurantState extends State<CustomRestaurant> with TickerProviderStateMixin {
   late TabController controller;
 
   void _setTabActive() {

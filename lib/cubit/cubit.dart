@@ -2,15 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:wasely/component/const_color.dart';
 import 'package:wasely/cubit/state.dart';
-import 'package:wasely/model/add_address.dart';
-import 'package:wasely/model/get_banners.dart';
-import 'package:wasely/services/base_url.dart';
-import 'package:wasely/services/dio_helper.dart';
-import 'package:wasely/utils/shared_pref.dart';
 
 class GeneralCubit extends Cubit<GeneralState> {
   GeneralCubit() : super(GeneralInitState());
