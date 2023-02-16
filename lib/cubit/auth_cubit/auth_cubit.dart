@@ -42,7 +42,7 @@ class AuthCubit extends Cubit<AuthState> {
      // print(value.data);
     print('#################### ${registerModel.message} #####################');
       print('#################### ${registerModel.status} #####################');
-      print('#################### ${registerModel.account!.email} #####################');
+      print('#################### ${registerModel.account!.firstName} #####################');
       // if(token==null){
       //   print('object1');
       // }else
@@ -73,6 +73,7 @@ class AuthCubit extends Cubit<AuthState> {
 
       print(loginModel.message);
       print('/////////////////////////////////////${loginModel.accessToken} ????????????????????');
+      print(loginModel.status);
       if(loginModel.accessToken==null){
         print('object1');
       }else{

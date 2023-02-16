@@ -1,25 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wasely/cubit/terms_and_aboutus_cubit/state.dart';
+
+import '../../cubit/terms_and_aboutus_cubit/cubit.dart';
+
 class PrivacyPolicesScreen extends StatelessWidget {
   const PrivacyPolicesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var cubit = TermsAndAboutUsCubit.get(context);
+    return BlocConsumer<TermsAndAboutUsCubit, TermsAndAboutUsState>(
+        listener: (context, state) {
+      // if(state is !GetTermsSuccessState){
+      //  print('object');
+      // }
+    }, builder: (context, state) {
+      return Scaffold(
         appBar: AppBar(
           title: Text('سياسه الخصوصيه'),
         ),
-      body: Padding(
-        padding:  EdgeInsets.symmetric(
-            horizontal: 12.0.sp,
-            vertical: 10.sp,
-        ),
-        child: Column(
-          children: [
-            Text('هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.\n ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي"\n فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص،\n وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها.')
-          ],
-        ),
-      ),
-    );
+        body: cubit.isGetTerms
+            ? Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 12.0.sp,
+                  vertical: 10.sp,
+                ),
+                child: Column(
+                  children: [
+                    Text(cubit.termsModel.appSettings!.terms,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w500),),
+                  ],
+                ),
+              )
+            : state is GetTermsErrorState
+                ? Align(
+                    alignment: Alignment.center,
+                    child: Text('يوجد مشكله بالاتصال',style: TextStyle(fontSize: 25.sp,fontWeight: FontWeight.bold),))
+                : Center(
+                    child: CircularProgressIndicator(),
+                  ),
+      );
+    });
   }
 }

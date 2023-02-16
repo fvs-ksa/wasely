@@ -21,7 +21,7 @@ class ProfileCubit extends Cubit<ProfileState>{
 
     ).then((value){
       profileModel=ProfileModel.fromJson(value.data);
-      print(profileModel.message);
+      print(profileModel);
       isInitialize=true;
       emit(WaselyGetProfileSuccessState());
     }).catchError((error){

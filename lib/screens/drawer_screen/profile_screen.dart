@@ -25,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
         },
         builder: (context, state) {
           TextEditingController nameController = TextEditingController(
-              text: profileCubit.profileModel.account!.fname);
+              text: profileCubit.profileModel.account!.firstName);
           TextEditingController phoneController = TextEditingController(
               text: profileCubit.profileModel.account!.phone);
           return  Scaffold(
@@ -40,9 +40,9 @@ class ProfileScreen extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: CircleAvatar(
                       backgroundImage: NetworkImage(
-                        profileCubit.profileModel!.account!.image!,
+                       // profileCubit.profileModel.account!.image,
 
-                        // 'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg'
+                         'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg'
                       ),
                       radius: 45.sp,
                     ),

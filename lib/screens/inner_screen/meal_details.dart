@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart'as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -70,10 +70,10 @@ class MealDetails extends StatelessWidget {
                               Navigator.pop(context);
                             },
                             icon: Icon(Icons.arrow_back_outlined)),
-                        Badge(
-                          badgeColor: redColor,
+                        badges.Badge(
+                            badgeStyle: badges.BadgeStyle(badgeColor: redColor),
 
-                            position: BadgePosition.topStart(top: -1,start: -1 ),
+                            position: badges.BadgePosition.topStart(top: -1,start: -1 ),
                             badgeContent: Text(cubit.cartCount.toString(),style: TextStyle(color: Colors.white),),
                             child: IconButton(
                                 onPressed: () {

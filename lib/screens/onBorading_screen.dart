@@ -82,9 +82,13 @@ void submit(BuildContext context){
 
                             ),
                               controller: boardController,
-                              count: onboarding.length),
+                              count: onboarding.length,
+                          ),
                           SizedBox(height: 5.h,),
-                          mainButton(width: 50.w,text: cubit.isLastFirstBoarding?'دخول الان':'التالي', color: redColor, context: context, fct: (){
+                          mainButton(
+                              buttonColor: amberColor,
+                              textColor: whiteColor,
+                              width: 50.w,text: cubit.isLastFirstBoarding?'دخول الان':'التالي', color: redColor, context: context, fct: (){
                             if(cubit.isLastFirstBoarding){
                               submit(context);
                             }else{

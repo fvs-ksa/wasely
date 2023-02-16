@@ -16,7 +16,9 @@ import 'package:wasely/cubit/detailsmeal_cubit/cubit.dart';
 import 'package:wasely/cubit/home_cubit/cubit.dart';
 import 'package:wasely/cubit/order_details_cubit/cubit.dart';
 import 'package:wasely/cubit/profile_cubit/cubit.dart';
+import 'package:wasely/cubit/terms_and_aboutus_cubit/cubit.dart';
 import 'package:wasely/pallette.dart';
+import 'package:wasely/screens/auth_screen/lo.dart';
 import 'package:wasely/screens/auth_screen/login_screen.dart';
 import 'package:wasely/screens/main_screen/home_screen.dart';
 import 'package:wasely/screens/onBorading_screen.dart';
@@ -91,6 +93,9 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider<ProfileCubit>(
               create: (context) => ProfileCubit()..getProfileData(),
+            ),
+            BlocProvider<TermsAndAboutUsCubit>(
+              create: (context) => TermsAndAboutUsCubit(),
             ),
             BlocProvider<HomeCubit>(
                 create: (context) => HomeCubit()..loadHomeData()..getUserCurrentLocation()),
