@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wasely/cubit/terms_and_aboutus_cubit/state.dart';
 import 'package:wasely/model/about_us_model.dart';

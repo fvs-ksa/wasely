@@ -41,6 +41,7 @@ class CurrentOrder extends StatelessWidget {
                     Center(
                       child: Text('تم الاتفاق مع السائق',style: TextStyle(color: redColor,fontSize: 12.sp),),
                     ),
+                    //Text('DSAASD',style: Theme.of(context).textTheme.headlineLarge,)
                   ],
                 ),
               ),
