@@ -70,10 +70,13 @@ GeneralCubit.get(context).changeIndexTab(value: tabController.index);
           ),
           body: Align(
             alignment: Alignment.topCenter,
-            child: TabBarView(controller: tabController,children: [
+            child: TabBarView(
+                controller: tabController,
+                children: [
               CurrentOrder(),
               PreviousOrder(),
-            ]),
+            ],
+            ),
           ),
         );
       },
