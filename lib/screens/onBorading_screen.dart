@@ -31,17 +31,17 @@ class OnBoradingScreen extends StatelessWidget {
         image: Image.asset(model.image),
         secondText: model.secondText);
   }
- // bool onBoarding=false;
-void submit(BuildContext context){
 
+  // bool onBoarding=false;
+  void submit(BuildContext context) {
     CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
-      if(value){
-       // onBoarding=true;
+      if (value) {
+        // onBoarding=true;
         navigateAndReplacement(context: context, child: LoginScreen());
       }
     });
+  }
 
-}
   @override
   Widget build(BuildContext context) {
     var cubit = GeneralCubit.get(context);
@@ -79,22 +79,31 @@ void submit(BuildContext context){
                             effect: ExpandingDotsEffect(
                               activeDotColor: redColor,
                               dotColor: Colors.redAccent.shade100,
-
                             ),
-                              controller: boardController,
-                              count: onboarding.length,
+                            controller: boardController,
+                            count: onboarding.length,
                           ),
-                          SizedBox(height: 5.h,),
+                          SizedBox(
+                            height: 5.h,
+                          ),
                           mainButton(
                               buttonColor: amberColor,
                               textColor: whiteColor,
-                              width: 50.w,text: cubit.isLastFirstBoarding?'دخول الان':'التالي', color: redColor, context: context, fct: (){
-                            if(cubit.isLastFirstBoarding){
-                              submit(context);
-                            }else{
-                              boardController.nextPage(duration: Duration(milliseconds: 750), curve:Curves.fastLinearToSlowEaseIn);
-                            }
-                          }),
+                              width: 50.w,
+                              text: cubit.isLastFirstBoarding
+                                  ? 'دخول الان'
+                                  : 'التالي',
+                              color: redColor,
+                              context: context,
+                              fct: () {
+                                if (cubit.isLastFirstBoarding) {
+                                  submit(context);
+                                } else {
+                                  boardController.nextPage(
+                                      duration: Duration(milliseconds: 750),
+                                      curve: Curves.fastLinearToSlowEaseIn);
+                                }
+                              }),
                           SizedBox(
                             height: 10.h,
                           )
